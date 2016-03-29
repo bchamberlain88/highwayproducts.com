@@ -1,0 +1,4 @@
+[19-Mar-2015 17:48:43 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[15-May-2015 13:17:24 CST6CDT] PHP Parse error:  syntax error, unexpected $end in /home/highwayp/public_html/new/_includes/functions.inc.php on line 308
+[18-Aug-2015 12:05:00 CST6CDT] PHP Parse error:  syntax error, unexpected '.' in /home/highwayp/public_html/new/_includes/footer.inc.php on line 67
+[18-Aug-2015 12:05:00 CST6CDT] PHP Parse error:  syntax error, unexpected '.' in /home/highwayp/public_html/new/_includes/footer.inc.php on line 67

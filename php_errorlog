@@ -1,0 +1,139 @@
+[13-Mar-2015 12:47:29 CST6CDT] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home/highwayp/public_html/new/_includes/functions.inc.php on line 485
+[13-Mar-2015 12:47:30 CST6CDT] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home/highwayp/public_html/new/_includes/functions.inc.php on line 485
+[13-Mar-2015 12:47:30 CST6CDT] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home/highwayp/public_html/new/_includes/functions.inc.php on line 485
+[19-Mar-2015 16:34:17 CST6CDT] PHP Fatal error:  Call to undefined function encryptString() in /home/highwayp/public_html/new/serve-test.php on line 8
+[19-Mar-2015 16:34:37 CST6CDT] PHP Fatal error:  Call to undefined function encryptString() in /home/highwayp/public_html/new/serve-test.php on line 8
+[19-Mar-2015 16:35:51 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:09:50 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:11:23 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:13:53 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:36:48 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:36:48 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:36:55 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:36:55 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:37:22 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:37:22 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:37:54 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:37:54 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:04 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:04 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:06 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:06 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:10 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:10 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:11 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:11 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:13 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:14 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:14 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:14 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:15 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:21 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:21 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:32 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:38:32 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:39:45 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:39:45 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:40:44 CST6CDT] PHP Fatal error:  Call to undefined function encryptImage() in /home/highwayp/public_html/new/serve-test.php on line 8
+[19-Mar-2015 17:44:09 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:44:09 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:47:56 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:47:56 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:48:24 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:48:24 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:48:24 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 17:48:27 CST6CDT] PHP Fatal error:  Cannot redeclare decryptString() (previously declared in /home/highwayp/public_html/new/_includes/connect.inc.php:26) in /home/highwayp/public_html/new/_includes/functions.inc.php on line 78
+[19-Mar-2015 19:11:29 CST6CDT] PHP Fatal error:  Call to a member function rotateImage() on a non-object in /home/highwayp/public_html/new/serve.php on line 34
+[19-Mar-2015 19:13:59 CST6CDT] PHP Fatal error:  Class 'Imagick' not found in /home/highwayp/public_html/new/serve.php on line 4
+[20-Mar-2015 13:22:27 CST6CDT] PHP Catchable fatal error:  mcrypt_encrypt() [<a href='function.mcrypt-encrypt'>function.mcrypt-encrypt</a>]: Mcrypt initialisation failed in /home/highwayp/public_html/new/_includes/functions.inc.php on line 67
+[27-Mar-2015 10:50:15 CST6CDT] PHP Parse error:  syntax error, unexpected $end in /home/highwayp/public_html/new/index.php on line 876
+[27-Mar-2015 10:50:15 CST6CDT] PHP Parse error:  syntax error, unexpected $end in /home/highwayp/public_html/new/index.php on line 876
+[01-May-2015 18:01:07 CST6CDT] PHP Parse error:  syntax error, unexpected $end in /home/highwayp/public_html/new/_includes/header.inc.php on line 572
+[11-May-2015 12:51:13 CST6CDT] PHP Parse error:  syntax error, unexpected $end in /home/highwayp/public_html/new/_includes/functions.inc.php on line 309
+[11-May-2015 13:01:09 CST6CDT] PHP Fatal error:  Call to undefined function image_crypt() in /home/highwayp/public_html/new/serve.php on line 16
+[11-May-2015 13:01:09 CST6CDT] PHP Fatal error:  Call to undefined function image_crypt() in /home/highwayp/public_html/new/serve.php on line 16
+[11-May-2015 13:01:09 CST6CDT] PHP Fatal error:  Call to undefined function image_crypt() in /home/highwayp/public_html/new/serve.php on line 16
+[11-May-2015 13:01:09 CST6CDT] PHP Parse error:  syntax error, unexpected $end, expecting T_VARIABLE or T_DOLLAR_OPEN_CURLY_BRACES or T_CURLY_OPEN in /home/highwayp/public_html/new/_includes/functions.inc.php on line 191
+[11-May-2015 13:01:48 CST6CDT] PHP Fatal error:  Call to undefined function galleryThumbs() in /home/highwayp/public_html/new/index.php on line 480
+[14-May-2015 19:44:59 CST6CDT] PHP Parse error:  syntax error, unexpected '>' in /home/highwayp/public_html/new/_includes/header.inc.php on line 227
+[15-May-2015 13:17:24 CST6CDT] PHP Fatal error:  Call to undefined function image_crypt() in /home/highwayp/public_html/new/serve.php on line 16
+[15-May-2015 13:17:24 CST6CDT] PHP Fatal error:  Call to undefined function image_crypt() in /home/highwayp/public_html/new/serve.php on line 16
+[15-May-2015 13:17:24 CST6CDT] PHP Warning:  Unterminated comment starting line 91 in /home/highwayp/public_html/new/_includes/functions.inc.php on line 91
+[19-May-2015 16:30:24 CST6CDT] PHP Fatal error:  Call to undefined function image_crypt() in /home/highwayp/public_html/new/imageTest.php on line 1
+[19-May-2015 16:30:31 CST6CDT] PHP Fatal error:  Call to undefined function image_crypt() in /home/highwayp/public_html/new/imageTest.php on line 1
+[19-May-2015 16:31:38 CST6CDT] PHP Parse error:  syntax error, unexpected '<' in /home/highwayp/public_html/new/imageTest.php on line 5
+[19-May-2015 17:55:37 CST6CDT] PHP Parse error:  syntax error, unexpected '<' in /home/highwayp/public_html/new/sliderTest.php on line 5
+[28-May-2015 12:22:13 CST6CDT] PHP Parse error:  syntax error, unexpected '<' in /home/highwayp/public_html/new/index.php on line 549
+[28-May-2015 12:22:14 CST6CDT] PHP Parse error:  syntax error, unexpected '<' in /home/highwayp/public_html/new/index.php on line 549
+[28-May-2015 13:23:30 CST6CDT] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/highwayp/public_html/new/_includes/functions.inc.php on line 948
+[28-May-2015 13:23:31 CST6CDT] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/highwayp/public_html/new/_includes/functions.inc.php on line 948
+[10-Jun-2015 16:47:30 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/highwayp/public_html/new/_includes/header.inc.php on line 599
+[23-Jun-2015 15:22:16 CST6CDT] PHP Warning:  Unterminated comment starting line 837 in /home/highwayp/public_html/new/_includes/functions.inc.php on line 837
+[23-Jun-2015 15:22:16 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/index.php on line 350
+[24-Jun-2015 16:09:22 CST6CDT] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/highwayp/public_html/new/index.php on line 711
+[24-Jun-2015 16:09:22 CST6CDT] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home/highwayp/public_html/new/index.php on line 711
+[22-Jul-2015 11:02:56 CST6CDT] PHP Parse error:  syntax error, unexpected T_ELSE in /home/highwayp/public_html/new/index.php on line 524
+[22-Jul-2015 11:02:56 CST6CDT] PHP Parse error:  syntax error, unexpected T_ELSE in /home/highwayp/public_html/new/index.php on line 524
+[22-Jul-2015 11:38:23 CST6CDT] PHP Parse error:  syntax error, unexpected T_ELSE in /home/highwayp/public_html/new/index.php on line 291
+[22-Jul-2015 11:38:23 CST6CDT] PHP Parse error:  syntax error, unexpected T_ELSE in /home/highwayp/public_html/new/index.php on line 291
+[22-Jul-2015 11:39:39 CST6CDT] PHP Parse error:  syntax error, unexpected T_ELSE in /home/highwayp/public_html/new/index.php on line 291
+[22-Jul-2015 11:44:02 CST6CDT] PHP Parse error:  syntax error, unexpected T_ELSE in /home/highwayp/public_html/new/index.php on line 291
+[22-Jul-2015 11:49:52 CST6CDT] PHP Parse error:  syntax error, unexpected $end in /home/highwayp/public_html/new/index.php on line 997
+[22-Jul-2015 11:50:55 CST6CDT] PHP Parse error:  syntax error, unexpected $end in /home/highwayp/public_html/new/index.php on line 997
+[22-Jul-2015 11:50:56 CST6CDT] PHP Parse error:  syntax error, unexpected $end in /home/highwayp/public_html/new/index.php on line 997
+[22-Jul-2015 13:05:56 CST6CDT] PHP Parse error:  syntax error, unexpected T_ELSE in /home/highwayp/public_html/new/index.php on line 801
+[22-Jul-2015 13:05:56 CST6CDT] PHP Parse error:  syntax error, unexpected T_ELSE in /home/highwayp/public_html/new/index.php on line 801
+[22-Jul-2015 13:06:48 CST6CDT] PHP Parse error:  syntax error, unexpected T_ELSEIF in /home/highwayp/public_html/new/index.php on line 434
+[22-Jul-2015 13:06:50 CST6CDT] PHP Parse error:  syntax error, unexpected T_ELSEIF in /home/highwayp/public_html/new/index.php on line 434
+[29-Jul-2015 17:53:54 CST6CDT] PHP Parse error:  syntax error, unexpected '.' in /home/highwayp/public_html/new/_includes/functions.inc.php on line 428
+[29-Jul-2015 17:53:54 CST6CDT] PHP Parse error:  syntax error, unexpected '.' in /home/highwayp/public_html/new/_includes/functions.inc.php on line 428
+[29-Jul-2015 18:41:48 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[29-Jul-2015 18:50:29 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[29-Jul-2015 22:57:36 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 06:41:09 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/main_cat_default.php on line 1
+[30-Jul-2015 06:42:18 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 06:51:49 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 06:54:35 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 06:55:55 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 06:59:27 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 07:00:29 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 07:00:37 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 09:23:53 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 12:35:16 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 14:11:06 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 14:51:24 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 22:20:41 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[30-Jul-2015 23:48:42 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/main_cat_default.php on line 1
+[31-Jul-2015 00:42:55 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[31-Jul-2015 10:52:22 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[31-Jul-2015 23:56:13 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[31-Jul-2015 23:56:14 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[01-Aug-2015 04:58:58 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[01-Aug-2015 12:12:23 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/main_cat_default.php on line 1
+[01-Aug-2015 16:40:04 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/main_cat_default.php on line 1
+[01-Aug-2015 16:47:54 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[01-Aug-2015 16:49:18 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[01-Aug-2015 16:52:06 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[01-Aug-2015 16:54:44 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[01-Aug-2015 17:21:14 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[01-Aug-2015 18:43:49 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[01-Aug-2015 18:43:59 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[01-Aug-2015 19:32:57 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[02-Aug-2015 12:43:55 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[02-Aug-2015 12:44:45 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[02-Aug-2015 12:45:26 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[02-Aug-2015 12:54:19 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[02-Aug-2015 18:58:36 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[03-Aug-2015 10:34:53 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[03-Aug-2015 10:43:52 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[03-Aug-2015 10:44:55 CST6CDT] PHP Fatal error:  Call to undefined function isFinanced() in /home/highwayp/public_html/new/_includes/sub_cat_default.php on line 1
+[04-Aug-2015 19:00:14 CST6CDT] PHP Parse error:  syntax error, unexpected '}' in /home/highwayp/public_html/new/_includes/quote.php on line 126
+[05-Aug-2015 19:29:32 CST6CDT] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting '(' in /home/highwayp/public_html/new/_includes/quote.php on line 29
+[05-Aug-2015 19:29:43 CST6CDT] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting '(' in /home/highwayp/public_html/new/_includes/quote.php on line 29
+[05-Aug-2015 19:29:57 CST6CDT] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting '(' in /home/highwayp/public_html/new/_includes/quote.php on line 29
+[14-Aug-2015 14:30:29 CST6CDT] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/highwayp/public_html/new/_includes/meta.inc.php on line 99
+[14-Aug-2015 14:30:29 CST6CDT] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/highwayp/public_html/new/_includes/meta.inc.php on line 99
+[14-Aug-2015 14:30:56 CST6CDT] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/highwayp/public_html/new/_includes/meta.inc.php on line 99
+[14-Aug-2015 14:31:09 CST6CDT] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/highwayp/public_html/new/_includes/meta.inc.php on line 99
+[18-Aug-2015 12:04:59 CST6CDT] PHP Parse error:  syntax error, unexpected '.' in /home/highwayp/public_html/new/_includes/footer.inc.php on line 67
+[18-Aug-2015 12:06:02 CST6CDT] PHP Parse error:  syntax error, unexpected '.' in /home/highwayp/public_html/new/_includes/footer.inc.php on line 67
