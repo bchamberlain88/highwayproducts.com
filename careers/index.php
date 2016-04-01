@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Warranty info page
+ *
+ * Careers page.
  *
  * @author    Sebastian Inman @sebastian_inman, inherited by Barrett Chamberlain
  * @link      http://www.highwayproducts.com
@@ -19,7 +20,7 @@ include_once('../_includes/newsletter.php');
         <span class='fa fa-arrow-down'></span>
     </a>
     <div class='wrapper fs'>
-        <div class='left-content'>
+        <div class='left-content' style="line-height: 26px;">
             <ul class='breadcrumbs' itemscope itemtype="http://schema.org/BreadcrumbList">
                 <li itemprop="itemListElement" itemscope
       itemtype="http://schema.org/ListItem"><a class='animate' href='<?php echo DIR_ROOT; ?>' itemprop="item">
@@ -27,33 +28,49 @@ include_once('../_includes/newsletter.php');
                 </a>
                 <meta itemprop="position" content="1" />
                 </li>
-                <li class="lastCrumb">Warranty</li>
+                <li>Careers</li>
             </ul>
-<h2>Warranties and Returns Made Easy</h2>
-<h3>Our Simple Promise to You:</h3>
+<div class="jobIntro">
 <p>
-<br />
-Dear Customer,
-In 1980, over 30 years ago, we first opened our doors at Highway Products, Inc. We soon found out the hard way that no matter what we do or how hard we try, sometimes a part gives up prematurely. And, that even the best engineering fails on occasion and in certain situations. We also found out, to our surprise, we're human! We found out that you, our customers, are very smart and realize everyone makes mistakes. But first, you were most interested in how our products performed. And second, if there was a problem, how are WE going to handle it?<br /><br />
-
-So we decided to take the pressure off our valued customer and put it where it should be, ON US! Thus, we are giving our customer a simple "Lifetime Warranty". No fine print to read, hidden rules or warranty cards to fill out, and no receipts needed for returns or service. So, if this is your first purchase from Highway Products, Inc., please read and believe the following: If we make a mistake, it will be our goal to fix or replace any defective products as fast as possible and Make You Happy!<br /><br />
-
-All of our standard products come with a Lifetime Warranty against defects in workmanship. One of the reasons we can offer Lifetime Warranties on our standard products is because we've witnessed many years of product abuse and used this information to continually improve these products. As well, we also promise to do our best to give you the same warranty for custom products we make just for you. Highway Products is the largest custom tool box manufacturer on the planet and we build these boxes by the thousands. Our custom products are designed by our top level engineers, so you get the best we can give.<br /><br />
-
-Your warranty will include locking mechanisms, hinges, gas props, weather strip, and most other materials we use. And, we'll give you free tech support on any problem you have. Plus, we'll replace lost keys, free. Naturally we cannot cover things like paint chips, light bulbs, abuse, minor adjustments that you can easily make yourself, and normal wear and tear.<br /><br />
-
-If the product you bought from Highway Products does not meet your expectations, we want to know so we can help you with it and make it better. All our products are a "Work in Progress", meaning, we are continually changing and improving them. Mostly, product improvements come from our customers suggestions!<br /><br />
-
-Custom made products are not easily resellable. Unless we goofed on something, we cannot normally give refunds. To avoid any problems on custom products, we'll create a product drawing for you to look at, make changes if necessary, and get your approval before we start production. We've found this proven method rarely has problems.<br />
-If you need large quantities, we'll build you the first one (first article) and send it to you, before we start production. This will insure that you get what you asked for.<br /><br />
-
-Our goal is: "You get a great product the first time!" We want you to buy from us again, recommend us to others, even brag about us, and show you Highway Products is: "A Name You Can Trust." Thank you for buying or considering our products. Without you we are nothing!<br /><br />
-
-Gene Gros<br />
-President, Highway Products, Inc.<br /><br />
-
-P.S. Feel free to ask for me if you don't think we're performing up to your standards. I'll personally take care of it. That's a promise. Made in the USA is not just a buzz word here at Highway Products. It means incredible performance! We guarantee it!
+Interested in starting a career with a company that cares about you and working with people who share the same interests?<br /><br />
 </p>
+<p>
+Highway Products is looking for professionals to join our team immediately in White City, Oregon. Highway Products builds the highest quality toolboxes on the market and the world's first 100% aluminum wakeboard boat via our sister company Pavati Wake Boats. We are a company that takes great pride in the quality of our work. If you want a career opportunity that will challenge you and always push you to reach new levels, we want to talk to you.<br /><br />
+</p>
+<p>
+Please explore our job listings:<br /><br />
+</p>
+</div>
+<div class="jobOffer">
+<img class="jobImg" src="Welder-Job-Listing.jpg">
+<p>
+Highway Products is in search of welders to join us in building the highest quality toolboxes on Earth. As a welder for Highway Products you will be dedicated to and responsible for the quality and outward appearance of your work, ultimately being delivered to the customers anticipating the best built toolboxes they've ever laid eyes on. Styles of welding include both Mig &amp; Tig and compensation is top of the line with a benefit package to match.<br /><br />
+<a href="HPIWeldingJobAd.pdf" target="_blank">Download Job Listing</a>
+</p>
+</div>
+<div class="jobOffer">
+<img class="jobImg" src="Welders-Assitant.jpg">
+<p>
+Highway Products is in search of a welding assistant to join us in building the highest quality toolboxes on Earth. As a welding assistant for Highway Products you will be dedicated to and responsible for helping the workflow of our welding team by handling a variety of small tasks as well as welding as duty calls. The qualified candidate should have experience welding and be confident in their ability to do so. If you're interested in getting your foot in the door, with great opportunities to advance, this job's the one for you.<br /><br />
+<a href="HPIWeldingAssistantJobAd.pdf" target="_blank">Download Job Listing</a>
+</p>
+</div>
+<div class="jobOffer">
+<img class="jobImg" src="PowderCoatJob.jpg">
+<p>
+Highway Products is looking for experienced powder coaters to join our team immediately in White City, Oregon. As a powder coater for Highway Products, you will be responsible for the application of a variety of powder coats to a quality standard that is unmatched in the industry. We take great pride in the quality of our work, and our customers appreciate that when they're on the job.<br /><br />
+<a href="HPIPowderCoaterJobAd.pdf" target="_blank">Download Job Listing</a>
+</p>
+</div>
+<div class="jobOffer">
+<img class="jobImg" src="PainterJob.jpg">
+<p>
+Highway Products is looking for experienced painters to join our team immediately in White City, Oregon. Our painters at Highway Products are responsible for the application of a variety of paints to a quality standard that is unmatched in the industry. We take great pride in the quality of our work, and our customers appreciate that when they're on the job.<br /><br />
+<a href="HPIPainterJobAd.pdf" target="_blank">Download Job Listing</a>
+</p>
+</div>
+<div class="leftSpacer">
+</div>
         </div>
         <div class='right-content'>
         <?php // include addthis api if sharing is allowed

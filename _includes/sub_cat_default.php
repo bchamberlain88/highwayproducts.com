@@ -16,12 +16,12 @@
                 <ul class='breadcrumbs' itemscope itemtype="http://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope
       itemtype="http://schema.org/ListItem"><a class='animate' href='<?php echo DIR_ROOT; ?>' itemprop="item">
-                        <i class='home-icon fa fa-home'></i> Highway Products <i class='fa fa-angle-right'></i>
+                        <i class='home-icon fa fa-home'></i> <span itemprop="name">Highway Products</span> <i class='fa fa-angle-right'></i>
                     </a>
                     <meta itemprop="position" content="1" />
                     </li>
                     <li itemprop="itemListElement" itemscope
-      itemtype="http://schema.org/ListItem"><a class='animate' href='<?php echo DIR_ROOT . $returnSubCat['url'] ?>' itemprop="item"><?php echo $returnSubCat['category']; ?> <i class='fa fa-angle-right'></i></a>
+      itemtype="http://schema.org/ListItem"><a class='animate' href='<?php echo DIR_ROOT . $returnSubCat['url'] ?>' itemprop="item"><span itemprop="name"><?php echo $returnSubCat['category']; ?></span> <i class='fa fa-angle-right'></i></a>
                     <meta itemprop="position" content="2" />
                     </li>
                     <li><?php echo $sub['name']; ?></li>

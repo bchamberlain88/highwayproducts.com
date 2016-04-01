@@ -175,6 +175,9 @@ function titleExists($product_selector) {
  	if($host == $_SERVER['SERVER_NAME'] . '/closeout/') {
  		return 'Closeout Section | Highway Products, Inc';
  	}
+ 	if($host == $_SERVER['SERVER_NAME'] . '/careers/') {
+ 		return 'Careers | Highway Products, Inc';
+ 	}
 }
 
 /**
@@ -242,6 +245,9 @@ function descExists($product_selector) {
  	}
  	if($host == $_SERVER['SERVER_NAME'] . '/closeout/') {
  		return 'Here you can view a list of our reduced-price closeout items';
+ 	}
+ 	if($host == $_SERVER['SERVER_NAME'] . '/careers/') {
+ 		return 'Join our team!';
  	}
 }
 

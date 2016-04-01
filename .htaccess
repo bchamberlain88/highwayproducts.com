@@ -1,0 +1,89 @@
+SetEnv PHPRC /home/highwayp/public_html/highwayproducts.com/php.ini
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)$ index.php?q=$1 [L]
+
+RewriteCond %{HTTP_HOST} ^181\.224\.144\.16
+RewriteRule (.*) http://www.highwayproducts.com/$1 [R=301,L]
+
+RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
+RewriteRule .* – [F,L]
+
+ErrorDocument 404 /error/404/
+AddHandler application/x-httpd-php53 .php .php5 .php4 .php3
+
+# URL rewriting (required for squeezr to work) 
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+
+    # Start the rewrite engine
+    RewriteEngine On
+    RewriteBase /
+    
+#############################################################################################################
+# REDIRECT ANY DIRECT IMAGE REQUEST TO A CACHED VERSION
+#
+# You may add files or directories that shouldn't be touched by squeezr like this:
+#
+#    RewriteCond %{REQUEST_URI} !path/to/some/file-or-directory
+#
+# Please refer to the mod_rewrite documentation at http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html for
+# further possibilities and instructions.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteCond %{ENV:REDIRECT_BREAKPOINT} !\d+px
+    RewriteCond %{QUERY_STRING} !^([^&]*&)*squeezr=(0|false|no)
+    RewriteCond %{HTTP_COOKIE} squeezr.images=(\d+px) [NC]
+    RewriteRule ^(.+)(\.(?:jpe?g|gif|png))$ squeezr/cache/$1-%1$2 [NC,E=BREAKPOINT:%1,L]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Please make sure that you set this path     ^^^     to the squeezr root directory that is also specified
+# for the SQUEEZR_ROOT constant in the common engine configuration (SQUEEZR_ROOT/conf/common.php). If you
+# apply the default setup for squeezr (i.e. put everything into a directory named "squeezr" under your
+# website's document root), then you shouldn't have to change anything.
+#############################################################################################################
+    
+</IfModule>
+
+
+#############################################################################################################
+# Additional stuff for improving your website's delivery performance
+#############################################################################################################
+
+# Deflating for text files (not required for squeezr, but recommended anyway)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css text/javascript text/json text/x-json text/x-json-stream application/x-javascript application/json application/x-json application/x-json-stream application/.*xml.* multipart/x-json-stream multipart/x-mixed-replace image/svg+xml
+</IfModule>
+
+# Various expiration headers for proper file caching (not required for squeezr, but recommended anyway)
+<IfModule mod_expires.c>
+
+    ExpiresActive on
+    
+    # Images
+    ExpiresByType image/gif "access plus 35 days"
+    ExpiresByType image/png "access plus 35 days"
+    ExpiresByType image/jpg "access plus 35 days"
+    ExpiresByType image/jpeg "access plus 35 days"
+    
+    # Text based files
+    ExpiresByType text/css "access plus 35 days"
+    ExpiresByType text/xml "access plus 35 days"
+    ExpiresByType text/javascript "access plus 35 days"
+    ExpiresByType application/x-shockwave-flash "access plus 35 days"
+    
+    # Default expiration
+    ExpiresDefault "access plus 1 days"
+
+</IfModule>

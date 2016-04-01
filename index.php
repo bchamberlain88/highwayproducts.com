@@ -179,10 +179,32 @@ $product_selector = $_GET['q'];
 
     $getProduct = mysql_query('SELECT * FROM product_categories_items WHERE selector = "'.$product_selector.'" LIMIT 1');
     $product = mysql_fetch_assoc($getProduct);
+    $getParent = mysql_query( "SELECT * FROM product_categories_sub WHERE selector = '" . $product['parent'] . "'" );
+    $parent = mysql_fetch_assoc($getParent);
+    if($product['is_base'] == 1) {
+        $thumb = DIR_IMAGES . '_products/' . $product['parent'] . '/' . $product['selector'] . '/' . $product['thumbnail'];
+    } else {
+        // the product has a thumbnail
+        $thumb = DIR_IMAGES . '_products/' . $parent['parent'] . '/' . $parent['selector'] . '/' . $product['selector'] . '/' . $product['thumbnail'];
+    }
     $getVideo = mysql_query('SELECT * FROM product_videos WHERE selector = "'.$product_selector.'" LIMIT 1');
     $video = mysql_fetch_assoc($getVideo);
     $getCategory = mysql_query('SELECT * FROM product_categories_sub WHERE selector = "'.$product['parent'].'"');
     $category = mysql_fetch_assoc($getCategory);
+    $limitedDesc = substr($product['description'], 0, 200);
+    echo '<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": "' . $product['name'] . '",
+  "image": "' . $thumb . '",
+  "description": "' . $limitedDesc . '...' . '",
+  "brand": {
+    "@type": "Thing",
+    "name": "Highway Products"
+  }
+}
+</script>';
     //if it's a single breadcrumb, get parent based on product instead of sub-category
     if($product['single_crumb'] == 1) { 
         $getMainCategory = mysql_query('SELECT * FROM product_categories_main WHERE selector = "'.$product['parent'].'"');
@@ -205,6 +227,21 @@ $product_selector = $_GET['q'];
     </div>
     <div class='wrapper fs'>
         <div class='left-content'>
+        <div class="googleSearch">
+        <script>
+  (function() {
+    var cx = '004600188335238068818:ygbxeqalcos';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:searchbox-only></gcse:searchbox-only>
+</div>
             <a class='animate button medium gold get-quote-btn get-quote-plox'>
                 <span class='fa fa-paper-plane'></span>
                 <span class='hide ten_twenty_four'>Click for a </span>free quote
@@ -216,7 +253,7 @@ $product_selector = $_GET['q'];
                     <li itemprop="itemListElement" itemscope
       itemtype="http://schema.org/ListItem">
                         <a class='animate' href='<?php echo DIR_ROOT; ?>' itemprop="item">
-                            <i class='home-icon fa fa-home'></i> Highway Products <i class='fa fa-angle-right'></i>
+                            <i class='home-icon fa fa-home'></i> <span itemprop="name">Highway Products</span> <i class='fa fa-angle-right'></i>
                         </a>
                     <meta itemprop="position" content="1" />
                     </li>
@@ -226,13 +263,13 @@ $product_selector = $_GET['q'];
                     <li itemprop="itemListElement" itemscope
       itemtype="http://schema.org/ListItem">
                         <a class='animate' href='<?php echo DIR_ROOT; ?>' itemprop="item">
-                            <i class='home-icon fa fa-home'></i> Highway Products <i class='fa fa-angle-right'></i>
+                            <i class='home-icon fa fa-home'></i> <span itemprop="name">Highway Products</span> <i class='fa fa-angle-right'></i>
                         </a>
                     <meta itemprop="position" content="1" />
                     </li>
                     <li itemprop="itemListElement" itemscope
       itemtype="http://schema.org/ListItem">
-                        <a class='animate' href='<?php echo DIR_ROOT . $mainCategory['url']; ?>' itemprop="item"><?php echo $mainCategory['category']; ?> 
+                        <a class='animate' href='<?php echo DIR_ROOT . $mainCategory['url']; ?>' itemprop="item"><span itemprop="name"><?php echo $mainCategory['category']; ?></span> 
                             <i class='fa fa-angle-right'></i>
                         </a>
                     <meta itemprop="position" content="2" />
@@ -242,7 +279,7 @@ $product_selector = $_GET['q'];
                     if($product['single_crumb'] == 1) { } else { ?>
                         <li itemprop="itemListElement" itemscope
       itemtype="http://schema.org/ListItem">
-                            <a class='animate' href='<?php echo DIR_ROOT . $category['url']; ?>' itemprop="item"><?php echo $category['name']; ?> 
+                            <a class='animate' href='<?php echo DIR_ROOT . $category['url']; ?>' itemprop="item"><span itemprop="name"><?php echo $category['name']; ?></span> 
                                 <i class='fa fa-angle-right'></i>
                             </a>
                         <meta itemprop="position" content="3" />
@@ -450,6 +487,21 @@ if( SET_SHARING == 'true' ) { ?>
 
         <!-- start left content - main container -->
         <div class='left-content'>
+        <div class="googleSearch">
+        <script>
+  (function() {
+    var cx = '004600188335238068818:ygbxeqalcos';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:searchbox-only></gcse:searchbox-only>
+</div>
 
             <a class='home-phone' href='tel:+1-800-866-5269'><span class='fa fa-phone'></span>1-800-866-5269</a>
 

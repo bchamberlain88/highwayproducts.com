@@ -25,10 +25,13 @@ $product = mysql_fetch_assoc($getProduct);
     </a>
     <div class='wrapper fs'>
         <div class='left-content'>
-            <ul class='breadcrumbs'>
-                <li><a class='animate' href='<?php echo DIR_ROOT; ?>'>
-                    <i class='home-icon fa fa-home'></i> Highway Products <i class='fa fa-angle-right'></i>
-                </a></li>
+            <ul class='breadcrumbs' class='breadcrumbs' itemscope itemtype="http://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope
+      itemtype="http://schema.org/ListItem"><a class='animate' href='<?php echo DIR_ROOT; ?>' itemprop="item">
+                    <i class='home-icon fa fa-home'></i> <span itemprop="name">Highway Products</span> <i class='fa fa-angle-right'></i>
+                </a>
+                <meta itemprop="position" content="1" />
+                </li>
                 <li>
                     <a class='animate' href='<?php echo DIR_ROOT . $_SESSION['accessory_selector']; ?>'><?php echo $product['name']; ?> 
                         <i class='fa fa-angle-right'></i>

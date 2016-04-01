@@ -33,10 +33,13 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
     <div class='wrapper fs'>
     <div class='left-content'>
 
-        <ul class='breadcrumbs'>
-            <li><a class='animate' href='<?php echo DIR_ROOT; ?>'>
-                <i class='home-icon fa fa-home'></i> Highway Products <i class='fa fa-angle-right'></i>
-            </a></li>
+        <ul class='breadcrumbs' itemscope itemtype="http://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope
+      itemtype="http://schema.org/ListItem"><a class='animate' href='<?php echo DIR_ROOT; ?>' itemprop="item">
+                <i class='home-icon fa fa-home'></i> <span itemprop="name">Highway Products</span> <i class='fa fa-angle-right'></i>
+            </a>
+            <meta itemprop="position" content="1" />
+            </li>
             <li class="lastCrumb">Contact</li>
         </ul>
 
@@ -44,7 +47,8 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
         <a href="tel:+1-800-866-5269"><img style="width: 100%;" src="<?php echo DIR_IMAGES. '_misc/how_to_buy.png' ?>" alt='How to buy' /></a>
         <p>Do you have any questions or comments about our products or services? Don't hold back! Our sales team is happy
         to help with any concerns you may have. Just fill out the form below and press the submit button to send your message
-        off to us, and we will respond to your message as soon as we can!</p>
+        off to us, and we will respond to your message as soon as we can!
+        </p>
         
         <ul class='sales-team hide six_hundred'>
 
@@ -61,7 +65,7 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
             ?>
 
         </ul>
-
+        <a target="_blank" href="<?php echo DIR_ROOT . 'careers';?>">Join our team!</a>
         <form class='contact-form aweber-form' data-submit='1082506812' name='contact-form' method='post'>
             <h1>Send us a message</h1>
             <div class='form-msg'></div>

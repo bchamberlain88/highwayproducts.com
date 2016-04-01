@@ -56,7 +56,7 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
             <ul class='breadcrumbs' itemscope itemtype="http://schema.org/BreadcrumbList">
                 <li itemprop="itemListElement" itemscope
       itemtype="http://schema.org/ListItem"><a class='animate' href='<?php echo DIR_ROOT; ?>' itemprop="item">
-                        <i class='home-icon fa fa-home'></i> Highway Products <i class='fa fa-angle-right'></i>
+                        <i class='home-icon fa fa-home'></i> <span itemprop="name">Highway Products</span> <i class='fa fa-angle-right'></i>
                     </a>
                 <meta itemprop="position" content="1" />
                 </li>
@@ -65,11 +65,11 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
                     if($product === false) {
                     //if it's a sub-item
                     echo "<li itemprop='itemListElement' itemscope
-      itemtype='http://schema.org/ListItem'>". "<a href='" . DIR_ROOT . $subItem['url']."' itemprop='item'>" . $subItem['name'] . "</a><meta itemprop='position' content='2' /><i class='fa fa-angle-right galArrow'></i></li>";
+      itemtype='http://schema.org/ListItem'>". "<a href='" . DIR_ROOT . $subItem['url']."' itemprop='item'><span itemprop='name'>" . $subItem['name'] . "</span></a><meta itemprop='position' content='2' /><i class='fa fa-angle-right galArrow'></i></li>";
                     echo "<li class='topMargin'>Gallery</li>";
                     } else {
                     echo "<li itemprop='itemListElement' itemscope
-      itemtype='http://schema.org/ListItem'>". "<a href='" . DIR_ROOT . $product['selector']."' itemprop='item'>" . $product['name'] . "</a><meta itemprop='position' content='2' /><i class='fa fa-angle-right galArrow'></i></li>";
+      itemtype='http://schema.org/ListItem'>". "<a href='" . DIR_ROOT . $product['selector']."' itemprop='item'><span itemprop='name'>" . $product['name'] . "</span></a><meta itemprop='position' content='2' /><i class='fa fa-angle-right galArrow'></i></li>";
                     echo "<li class='topMargin'>Gallery</li>";
                     }
                 }else{

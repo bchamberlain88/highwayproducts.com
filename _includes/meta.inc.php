@@ -83,7 +83,7 @@ if (document.cookie.indexOf("quote_sent") >= 0) {
     ],
     "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "(800) 866-5269",
+        "telephone": "+1-800-866-5269",
         "contactType": "Sales",
         "contactOption": "TollFree",
         "areaServed": "",
@@ -200,7 +200,12 @@ All code and resources are copyright to Highway Products Inc.
     <!-- import Google fonts :: Open Sans :: Light, Regular, Bold, Extra Bold -->
     <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie%7COpen+Sans:200,400,700,800' rel='stylesheet' type='text/css'>
     <!-- import reset, all global page styles, and lightbox styles -->
-    <link href='<?php echo DIR_STYLES.'style.min.css?' ?>' rel='stylesheet' type='text/css'>
+    <?php 
+    //append modified date to stylesheet to force browser updating
+    $stylesheetLoc = './_assets/_styles/style.min.css'; 
+    $stylesheetModTime = filemtime($stylesheetLoc);
+    ?>
+    <link href='<?php echo DIR_STYLES.'style.min.css?' . filemtime($stylesheetLoc); ?>' rel='stylesheet' type='text/css'>
 
 </head>
 
