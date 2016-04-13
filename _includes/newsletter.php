@@ -3,6 +3,11 @@ $getNewsCodes = mysql_query('SELECT * FROM newsletter_codes WHERE selector = "'.
 $newsCodes = mysql_fetch_assoc($getNewsCodes); 
 $host = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
+if(strpos($host,'search') !== false) { 
+    $newsFormID = 1999250091;
+    $newsEmailID = 79713856;
+}
+
 if($host == $_SERVER['SERVER_NAME'] . '/' || $host == $_SERVER['SERVER_NAME'] . '/&quote=sent' || $host == $_SERVER['SERVER_NAME'] . '/?newsletter=sent'
 ) {
     $newsFormID = 1999250091;

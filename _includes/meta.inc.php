@@ -98,6 +98,18 @@ if (document.cookie.indexOf("quote_sent") >= 0) {
         "streetAddress": "7905 Agate Rd"
     }
 }</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.highwayproducts.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "http://www.highwayproducts.com/search.php?p={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 <!-- Facebook Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -203,7 +215,6 @@ All code and resources are copyright to Highway Products Inc.
     <?php 
     //append modified date to stylesheet to force browser updating
     $stylesheetLoc = './_assets/_styles/style.min.css'; 
-    $stylesheetModTime = filemtime($stylesheetLoc);
     ?>
     <link href='<?php echo DIR_STYLES.'style.min.css?' . filemtime($stylesheetLoc); ?>' rel='stylesheet' type='text/css'>
 

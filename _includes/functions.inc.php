@@ -121,6 +121,10 @@ function redirect($url) {
 
 function titleExists($product_selector) {
 	$host = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+	if(strpos($host,'search') !== false) {
+ 			$pageTitle = 'Search results for: ' . $_GET['p']; 
+ 			return $pageTitle;
+ 		}
 	$checkPage = mysql_query("SELECT * FROM product_categories_items WHERE selector = '".$product_selector."' and meta_title is not null"); 	
 	$checkSub = mysql_query("SELECT * FROM product_categories_sub WHERE url = '".$product_selector."' and meta_title is not null"); 
 	$checkCat = mysql_query("SELECT * FROM product_categories_main WHERE url = '".$product_selector."' and meta_title is not null"); 
@@ -192,6 +196,10 @@ function titleExists($product_selector) {
 
 function descExists($product_selector) {
 	$host = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+	if(strpos($host,'search') !== false) {
+		$pageDesc = 'Search results for: ' . $_GET['p'];
+		return $pageDesc;
+	}
 	$checkPage = mysql_query("SELECT * FROM product_categories_items WHERE selector = '".$product_selector."' and meta_title is not null"); 	
 	$checkSub = mysql_query("SELECT * FROM product_categories_sub WHERE url = '".$product_selector."' and meta_title is not null"); 
 	$checkCat = mysql_query("SELECT * FROM product_categories_main WHERE url = '".$product_selector."' and meta_title is not null"); 
@@ -1602,7 +1610,7 @@ function galleryImageThumbs( $source = 'product', $selector, $limit = 3 ) {
 		echo "<div class='view-gallery-link'><a target='_blank' class='animate' href='".DIR_ROOT."gallery/".$selector."'>View Gallery</a></div>";
 	}
 	if(empty($list)){
-		echo "<span class='categories'><p>There are no gallery images at this time.</p></span>";
+		// echo "<span class='categories'><p>There are no gallery images at this time.</p></span>";
 	}
 }
 

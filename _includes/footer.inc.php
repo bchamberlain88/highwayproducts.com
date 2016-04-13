@@ -68,7 +68,11 @@
 <!-- import the latest jQuery API -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <!-- import global javascript functions and plugins -->
-<script type="text/javascript" src="<?php echo DIR_SCRIPTS . 'script.js?' ?>"></script>
+<?php 
+//append modified date to scripts to force browser updating
+$scriptLoc = './_assets/_scripts/script.js'; 
+?>
+<script type="text/javascript" src="<?php echo DIR_SCRIPTS . 'script.js?' . filemtime($scriptLoc); ?>"></script>
 <!-- Start of LiveChat (www.livechatinc.com) code -->
 <script type="text/javascript">
 window.__lc = window.__lc || {};
