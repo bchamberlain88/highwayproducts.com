@@ -122,7 +122,7 @@ function redirect($url) {
 function titleExists($product_selector) {
 	$host = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 	if(strpos($host,'search') !== false) {
- 			$pageTitle = 'Search results for: ' . $_GET['p']; 
+ 			$pageTitle = 'Search results for: "' . $_GET['p'] . $_GET['static-search'] . '" at Highway Products'; 
  			return $pageTitle;
  		}
 	$checkPage = mysql_query("SELECT * FROM product_categories_items WHERE selector = '".$product_selector."' and meta_title is not null"); 	
@@ -197,7 +197,7 @@ function titleExists($product_selector) {
 function descExists($product_selector) {
 	$host = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 	if(strpos($host,'search') !== false) {
-		$pageDesc = 'Search results for: ' . $_GET['p'];
+		$pageDesc = 'Search results for: \'' . $_GET['p'] . '\' at Highway Products';
 		return $pageDesc;
 	}
 	$checkPage = mysql_query("SELECT * FROM product_categories_items WHERE selector = '".$product_selector."' and meta_title is not null"); 	
@@ -1536,81 +1536,98 @@ function galleryImageThumbs( $source = 'product', $selector, $limit = 3 ) {
 		$convPath2 = '/_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/';
 		$thumbPath = '/_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/_thumbnails/';
 		}
-	} else if ( $source = 'category' ) {
-		// select the product from the database
-		$getProduct = mysql_query( "SELECT * FROM product_categories_sub WHERE url = '" . $selector . "'" );
-		$product = mysql_fetch_assoc( $getProduct );
-		// set the path for the products gallery
-		$path = './_assets/_images/_products/' . $product['parent'] . '/' . $product['selector'] . '/_gallery/';
-		$convPath2 = '/_assets/_images/_products/' . $product['parent'] . '/' . $product['selector'] . '/_gallery/';
-		$thumbPath = '/_assets/_images/_products/' . $product['parent'] . '/' . $product['selector'] . '/_gallery/_thumbnails/';
-	} else if ( $source = 'package' ) {
-		// select the package from the database
-		$getPackage = mysql_query( "SELECT * FROM product_packages WHERE selector = '" . $selector . "'" );
-		$package = mysql_fetch_assoc( $getPackage );
-		$path = './_assets/_images/_packages/' . $package['selector'] . '/_gallery/';
-	} else if ( $source = 'custom' ) {
-		// select the custom product from the database
-		$getCustom = mysql_query( "SELECT * FROM product_custom WHERE selector = '" . $selector . "'" );
-		$custom = mysql_fetch_assoc( $getCustom );
-		$path = './_assets/_images/_products/custom/' . $custom['selector'] . '/_gallery/';
-	}
-	// check if the path exists
-	$i = 0;
-	$dir = opendir($path);
-	$list = array();
-	while($file = readdir($dir)){
-		if($file != "." and $file != ".." and $file != "Thumbs.db" and $file != "_thumbnails"){
-			$ctime = filectime($data_path . $file) . "," . $file;
-			$list[$ctime] = $file;
-		}
-	}
-	closedir($dir);
-	natsort($list);
-	foreach($list as $image){
-		$i++;
-		$dirCheck = BASE_THUMBNAIL . $thumbPath;
-		//create directory if it doesn't exist
-		if (!file_exists($dirCheck)) {
-    		mkdir($dirCheck, 0755, true);
+		// check if the path exists
+		$i = 0;
+		$dir = opendir($path);
+		$list = array();
+		while($file = readdir($dir)){
+			if($file != "." and $file != ".." and $file != "Thumbs.db" and $file != "_thumbnails"){
+				$ctime = filectime($data_path . $file) . "," . $file;
+				$list[$ctime] = $file;
 			}
-		//get sha1 hash of image
-		$currentHash = (sha1_file($path . $image));
-		//separate parts of image name
-		$thumbImage =  $image;
-		$path_parts = pathinfo($thumbImage);
-		$matchedImageName = $path_parts['filename'];
-		//set rest of thumbnail conversion path
-		$smallThumb = '/usr/bin/convert' . ' ' . BASE_THUMBNAIL . $convPath2 . $image . ' -resize 97x ' . BASE_THUMBNAIL . $thumbPath . $path_parts['filename'] . '_sm' . '.' . $path_parts['extension'];
-		$medThumb = '/usr/bin/convert' . ' ' . BASE_THUMBNAIL . $convPath2 . $image . ' -resize 265x ' . BASE_THUMBNAIL . $thumbPath . $path_parts['filename'] . '_med' . '.' . $path_parts['extension'];
-		$checkHash = mysql_query( "SELECT * FROM thumbnail_compare WHERE thumbhash = '" . $currentHash . "' and imgname = '" . $matchedImageName . "' and selector = '" . $selector . "'" );
-		 if(mysql_num_rows($checkHash)>0) {
-		 	//matched with hash, do nothing
-		 } else {
-		 	//convert image to thumbnails
-			exec($smallThumb);
-			exec($medThumb);
-			$addHash = mysql_query("INSERT INTO thumbnail_compare (thumbhash, selector, imgname) VALUES ('$currentHash','$selector','$matchedImageName')");
 		}
-		if($i <= $limit){
-			echo "<a class='side-gallery-img dv-3'>";
-				echo "<div class='image animate'>";
-					echo "<img alt='" . $product['meta_keywords'] . ' ' . $i . "' title='" . $product['meta_keywords'] . ' ' . $i . "' class='animate lb magnific";
-					if( SET_LAZY_LOAD == 'true' ) {
-						echo " lazy";
-					}
-					echo "' data-group='" . $selector . "' data-id='" . $i . "' data-source='./serve.php?source=".$path."&amp;image=".$image."&amp;thumb=1' data-mfp-src='".$path.$image."' itemprop='image' src='" . $path . '_thumbnails/' . $path_parts['filename'] . '_med' . '.' . $path_parts['extension'] ."' />";
+		closedir($dir);
+		natsort($list);
+		foreach($list as $image){
+			$i++;
+			$dirCheck = BASE_THUMBNAIL . $thumbPath;
+			//create directory if it doesn't exist
+			if (!file_exists($dirCheck)) {
+    			mkdir($dirCheck, 0755, true);
+				}
+			//get sha1 hash of image
+			$currentHash = (sha1_file($path . $image));
+			//separate parts of image name
+			$thumbImage =  $image;
+			$path_parts = pathinfo($thumbImage);
+			$matchedImageName = $path_parts['filename'];
+			//set rest of thumbnail conversion path
+			$smallThumb = '/usr/bin/convert' . ' ' . BASE_THUMBNAIL . $convPath2 . $image . ' -resize 97x ' . BASE_THUMBNAIL . $thumbPath . $path_parts['filename'] . '_sm' . '.' . $path_parts['extension'];
+			$medThumb = '/usr/bin/convert' . ' ' . BASE_THUMBNAIL . $convPath2 . $image . ' -resize 265x ' . BASE_THUMBNAIL . $thumbPath . $path_parts['filename'] . '_med' . '.' . $path_parts['extension'];
+			$checkHash = mysql_query( "SELECT * FROM thumbnail_compare WHERE thumbhash = '" . $currentHash . "' and imgname = '" . $matchedImageName . "' and selector = '" . $selector . "'" );
+		 	if(mysql_num_rows($checkHash)>0) {
+		 		//matched with hash, do nothing
+		 	} else {
+		 		//convert image to thumbnails
+				exec($smallThumb);
+				exec($medThumb);
+				$addHash = mysql_query("INSERT INTO thumbnail_compare (thumbhash, selector, imgname) VALUES ('$currentHash','$selector','$matchedImageName')");
+			}
+			if($i <= $limit){
+				echo "<a class='side-gallery-img dv-3'>";
+					echo "<div class='image animate'>";
+						echo "<img alt='" . $product['meta_keywords'] . ' ' . $i . "' title='" . $product['meta_keywords'] . ' ' . $i . "' class='animate lb magnific";
+				if( SET_LAZY_LOAD == 'true' ) {
+					echo " lazy";
+				}
+				echo "' data-group='" . $selector . "' data-id='" . $i . "' data-source='./serve.php?source=".$path."&amp;image=".$image."&amp;thumb=1' data-mfp-src='".$path.$image."' itemprop='image' src='" . $path . '_thumbnails/' . $path_parts['filename'] . '_med' . '.' . $path_parts['extension'] ."' />";
 				echo "</div>";
-			echo "</a>";
-		} else { 
-		echo "<img alt='" . $product['meta_keywords'] . ' ' . $i . "' title='" . $product['meta_keywords'] . ' ' . $i . "' class='no-display magnific' data-mfp-src='".$path.$image."' />";
+				echo "</a>";
+			} else { 
+				echo "<img alt='" . $product['meta_keywords'] . ' ' . $i . "' title='" . $product['meta_keywords'] . ' ' . $i . "' class='no-display magnific' data-mfp-src='".$path.$image."' />";
+			}
+		}
+		if($i > $limit && $i > 0 || $rHasGalVideo !== false && mysql_num_rows($rHasGalVideo) > 0){
+			echo "<div class='view-gallery-link'><a target='_blank' class='animate' href='".DIR_ROOT."gallery/".$selector."'>View Gallery</a></div>";
+		}
+		if(empty($list)){
+			// echo "<span class='categories'><p>There are no gallery images at this time.</p></span>";
 		}
 	}
-	if($i > $limit && $i > 0 || $rHasGalVideo !== false && mysql_num_rows($rHasGalVideo) > 0){
-		echo "<div class='view-gallery-link'><a target='_blank' class='animate' href='".DIR_ROOT."gallery/".$selector."'>View Gallery</a></div>";
-	}
-	if(empty($list)){
-		// echo "<span class='categories'><p>There are no gallery images at this time.</p></span>";
+	if( $source == 'link' ) {
+		echo 'product selector is: ' . $selector . '<br />';
+		// select the product from the database
+		$getProduct = mysql_query( "SELECT * FROM product_categories_items WHERE selector = '" . $selector . "'" );
+		$product = mysql_fetch_assoc( $getProduct );
+		//check if it has an associated gallery video
+		$hasGalVideo = mysql_query( "SELECT * FROM product_videos WHERE selector = '" . $selector . "'" );
+		$rHasGalVideo = mysql_fetch_assoc($hasGalVideo);
+		// get the products parent information
+		$getParent = mysql_query( "SELECT * FROM product_categories_sub WHERE selector = '" . $product['parent'] . "'" );
+		$parent = mysql_fetch_assoc( $getParent );
+		// set the path for the products gallery
+		if($product['is_base'] == 1) {
+			$path = './_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/';
+			$convPath2 = '/_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/';
+			$thumbPath = '/_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/_thumbnails/';
+		} else {
+			$path = './_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/';
+			$convPath2 = '/_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/';
+			$thumbPath = '/_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/_thumbnails/';
+		}
+		// check if the path exists
+		$i = 0;
+		$dir = opendir($path);
+		$list = array();
+		while($file = readdir($dir)){
+			if($file != "." and $file != ".." and $file != "Thumbs.db" and $file != "_thumbnails"){
+				$ctime = filectime($data_path . $file) . "," . $file;
+				$list[$ctime] = $file;
+			}
+		}
+		if(!empty($list)){ ?>
+			<a target="_blank" class='product-slide-link gallery-link' href="<?php echo DIR_ROOT . 'gallery/' . $selector ?>">View Gallery <i class='fa fa-angle-right'></i></a>
+		<?php }
 	}
 }
 

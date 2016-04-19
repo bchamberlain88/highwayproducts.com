@@ -39,19 +39,17 @@ include_once( './_includes/newsletter.php' ); ?>
             </ul>
 <div class="search-bar">
 <form method="GET" name="search-bar" action="<?php echo $_SERVER['$SCRIPT_NAME'] ?>">
-<input type="text" name="static-search" class="static-search-input"></input>
-<input type="submit">
+<input type="text" name="p" class="static-search-input"></input>
+<input type="submit" value="Submit">
 </form>
 </div>
 <?php 
-// set query var to either incoming value from google or search form input
-if(isset($_GET['static-search'])) {
-    $query = mysql_real_escape_string( $_GET['static-search'] );
-} else {
+// set query var
+if(isset($_GET['p'])) {
     $query = mysql_real_escape_string( $_GET['p'] );
 }
 // explode the query into an array of words
-$words = explode( '-', $query );
+$words = explode( ' ', $query );
 // create an empty array to house the search results
 $results = array();
 
@@ -176,7 +174,7 @@ foreach( $results_u as $result ) { ?>
 	<li class='search-result-static <?php if($result['likeness'] > 10){ echo "related"; } ?>' data-product='<?php echo $result['id']; ?>' data-likeness='<?php echo $result['likeness']; ?>'>
 		<a href='<?php echo DIR_ROOT . $result['selector']; ?>'>
 		<div class='result-image'>
-			<img src='<?php echo $result['thumbnail']; ?>' />
+			<img alt="<?php echo $result['name']?>" title="<?php echo $result['name']?>" src='<?php echo $result['thumbnail']; ?>' />
 		</div>
 		<div class='result-info'>
 			<h2 class='animate'><?php echo $result['name']; ?></h2>

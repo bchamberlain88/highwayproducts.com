@@ -55,6 +55,12 @@
                     <span>Custom Drawers</span>
                 </div>
             </a>
+            <a class="item items-block one-fourth" href='<?php echo DIR_ROOT; ?>dock-boxes'>
+                <div class="item-block-content">
+                    <img class="item-block-thumb" alt='Dock Boxes' title='Dock Boxes' src='<?php echo DIR_IMAGES; ?>_products/trucks-pickup/miscellaneous/dock-boxes/dock-boxes-thumb.jpg' />
+                    <span>Dock Boxes</span>
+                </div>
+            </a>
         </div>
     </li>
 </ul>

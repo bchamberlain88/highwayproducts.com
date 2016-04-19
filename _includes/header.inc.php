@@ -96,14 +96,10 @@
             </li>
             </ul>
 
-            <form class='nav-search'>
+            <form name="search-bar" class='nav-search' method="GET" action="search.php">
                 <i class='close-nav-search fa fa-lg fa-times'></i>
-                <span class='result-load'><i class='fa fa-cog fa-spin'></i></span>
-                <input placeholder='Search all products e.g. "Headache Racks"' type='text' />
-                <div class='search-results'>
-                    <h2>Search Results:<span class='result-count'></span></h2>
-                    <ul class='results'></ul>
-                </div>
+                <input class="search-input" name="p" placeholder='Search all products e.g. "Headache Racks"' type='text' />
+                <input class="search-submit" value="Submit" type="submit">
             </form>
 
 

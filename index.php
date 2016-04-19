@@ -220,7 +220,7 @@ $product_selector = $_GET['q'];
         </div>
     </div>
     <div class='selectors-container'>
-        <a target="_blank" class='product-slide-link gallery-link' href="<?php echo DIR_ROOT . 'gallery/' . $product_selector ?>">View Gallery <i class='fa fa-angle-right'></i></a>
+    <?php galleryImageThumbs('link', $product_selector); ?>
         <ul class='selectors'>
             <!-- jquery will append the slide selectors -->
         </ul>
