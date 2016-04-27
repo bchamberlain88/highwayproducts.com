@@ -24,7 +24,7 @@
                 <li><a class="animate" target="_blank" href="https://www.google.com/maps/place/7905+Agate+Rd,+White+City,+OR+97503/@42.432178,-122.85753,17z/data=!3m1!4b1!4m2!3m1!1s0x54cf62c2a987ab73:0x2ab8a7109ae215a3">7905 Agate Rd.</a></li>
                 <li><a class="animate" target="_blank" href="https://www.google.com/maps/place/7905+Agate+Rd,+White+City,+OR+97503/@42.432178,-122.85753,17z/data=!3m1!4b1!4m2!3m1!1s0x54cf62c2a987ab73:0x2ab8a7109ae215a3">White City, OR 97503</a></li>
                 <li><a href="mailto:<?php echo META_CONTACT; ?>"><span class='fa fa-envelope-o animate'></span></a><a class="animate" href="mailto:<?php echo META_CONTACT; ?>">sales@highwayproducts.com</a></li>
-                <li><span class='fa fa-phone'></span> 1-800-TOOL-BOX (866-5269)</li>
+                <li><span class='fa fa-phone'></span>1-877-690-4679</li>
                 <li>&nbsp;</li>
                 <li><a target="_blank" href="<?php echo DIR_ROOT . 'careers';?>">Join our team!</a></li>
                 <li>&nbsp;</li>

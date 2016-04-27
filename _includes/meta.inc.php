@@ -83,7 +83,7 @@ if (document.cookie.indexOf("quote_sent") >= 0) {
     ],
     "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+1-800-866-5269",
+        "telephone": "+1-877-690-4679",
         "contactType": "Sales",
         "contactOption": "TollFree",
         "areaServed": "",

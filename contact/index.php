@@ -44,7 +44,7 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
         </ul>
 
         <h1>Contact Highway Products Inc.</h1>
-        <a href="tel:+1-800-866-5269"><img style="width: 100%;" src="<?php echo DIR_IMAGES. '_misc/how_to_buy.png' ?>" alt='How to buy' /></a>
+        <a href="tel:+1-877-690-4679"><img style="width: 100%;" src="<?php echo DIR_IMAGES. '_misc/how_to_buy.png?' . filemtime_remote(DIR_IMAGES. '_misc/how_to_buy.png'); ?>" alt='How to buy' /></a>
         <p>Do you have any questions or comments about our products or services? Don't hold back! Our sales team is happy
         to help with any concerns you may have. Just fill out the form below and press the submit button to send your message
         off to us, and we will respond to your message as soon as we can!
@@ -135,7 +135,7 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
 
             <li class='callout-feature'>
                 <i class='circle fa fa-phone'></i>
-                1-800-tool-box (866-5269)
+                <a href="tel:+1-877-690-4679">1-877-690-4679</a>
             </li>
 
         </ul>

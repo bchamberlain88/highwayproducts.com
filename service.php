@@ -54,7 +54,7 @@ If there are any questions regarding this privacy policy you may contact us usin
 White City, Oregon 97503<br>
 USA<br><br>
 <a href="/cdn-cgi/l/email-protection#c6afa8a0a986aeafa1aeb1a7bfb6b4a9a2b3a5b2b5e8a5a9ab">info@highwayproducts.com</a><br>
-1-800-866-5269<br>
+1-877-690-4679<br>
 Webmaster: barrett.chamberlain@highwayproducts.com<br><br>
 
 This policy is powered by Free Privacy Policy and <a href="http://www.rhinosupport.com">Rhino Support</a> help desk software.

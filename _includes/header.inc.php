@@ -40,7 +40,7 @@
         <div class='wrapper'>
 
             <a class='nav-logo' href='<?php echo DIR_ROOT; ?>'>
-                <img alt='Highway Products Inc.' class='' src='<?php echo DIR_IMAGES; ?>highway-logo-silver.png'/>
+                <img alt='Highway Products Inc.' class='' src='<?php echo DIR_IMAGES . 'highway-logo-silver.png?' . filemtime_remote(DIR_IMAGES . 'highway-logo-silver.png') ; ?>'/>
             </a>
 
             <button class='toggle-mobile-nav'>
@@ -57,7 +57,7 @@
             <ul class='nav-links main'>
                 <li>
                     <a href='<?php echo DIR_ROOT; ?>'>
-                        <img alt="Call 1-800-TOOLBOX for a free quote!" class='header-phone-large' src='<?php echo DIR_IMAGES; ?>1-800-toolbox-dark-number.png'/>
+                        <img alt="Call 1-800-TOOLBOX for a free quote!" class='header-phone-large' src='<?php echo DIR_IMAGES . '1-800-toolbox-dark-number.png?' . filemtime_remote(DIR_IMAGES . '1-800-toolbox-dark-number.png'); ?>'/>
                     </a>
                     <!--
                     <h1 class='header-huge-phone-number'>1-800-TOOLBOX</h1>
@@ -96,7 +96,7 @@
             </li>
             </ul>
 
-            <form name="search-bar" class='nav-search' method="GET" action="search.php">
+            <form name="search-bar" class='nav-search' method="GET" action="<?php echo DIR_ROOT ?>search.php">
                 <i class='close-nav-search fa fa-lg fa-times'></i>
                 <input class="search-input" name="p" placeholder='Search all products e.g. "Headache Racks"' type='text' />
                 <input class="search-submit" value="Submit" type="submit">

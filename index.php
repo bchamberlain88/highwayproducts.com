@@ -503,7 +503,7 @@ if( SET_SHARING == 'true' ) { ?>
 <gcse:searchbox-only></gcse:searchbox-only>
 </div>
 
-            <a class='home-phone' href='tel:+1-800-866-5269'><span class='fa fa-phone'></span>1-800-866-5269</a>
+            <a class='home-phone' href='tel:+1-877-690-4679'><span class='fa fa-phone'></span>1-877-690-4679</a>
 
             <!-- introduction copy -->
             <h1><span class='hide four_eighty'>Welcome to </span>Highway Products Inc.</h1>
@@ -571,7 +571,7 @@ if( SET_SHARING == 'true' ) { ?>
             <?php } ?>
 
             <h2>Call us today!</h2>
-            <h1>1-800-866-5269</h1>
+            <h1>1-877-690-4679</h1>
 
             <div class='side-sep smaller'></div>
 

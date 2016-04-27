@@ -11,6 +11,46 @@
 
 /**
  *
+ * Get filemtime by remote link instead of relative
+ *
+ * @param string $uri : link to asset to get filemtime of
+ *
+ */
+
+function filemtime_remote($uri)
+{
+    $uri = parse_url($uri);
+    $handle = @fsockopen($uri['host'],80);
+    if(!$handle)
+        return 0;
+
+    fputs($handle,"GET $uri[path] HTTP/1.1\r\nHost: $uri[host]\r\n\r\n");
+    $result = 0;
+    while(!feof($handle))
+    {
+        $line = fgets($handle,1024);
+        if(!trim($line))
+            break;
+
+        $col = strpos($line,':');
+        if($col !== false)
+        {
+            $header = trim(substr($line,0,$col));
+            $value = trim(substr($line,$col+1));
+            if(strtolower($header) == 'last-modified')
+            {
+                $result = strtotime($value);
+                break;
+            }
+        }
+    }
+    fclose($handle);
+    return $result;
+}
+
+
+/**
+ *
  * Check for page urls set to be redirected
  *
  * @param string $host : combination of $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
@@ -760,9 +800,9 @@ function slides( $source = 'product', $selector, $limit ) {
 					echo "<img class='";
 					if( SET_LAZY_LOAD == 'true' ) {
 						if( $i == 1 ) {
-						echo "now' alt='" . $product['meta_keywords'] . ' ' . $i . "' title='" . $product['meta_keywords'] . ' ' . $i . "' src='" . $imgsource . $imgname . "' />";
+						echo "now' alt='" . $product['meta_keywords'] . ' ' . $i . "' title='" . $product['meta_keywords'] . ' ' . $i . "' src='" . $imgsource . $imgname . '?' . filemtime_remote($imgsource . $imgname) . "' />";
 					} else {
-						echo "delayLoad lazy' alt='" .  $product['meta_keywords'] . ' ' . $i . "' title='" . $product['meta_keywords'] . ' ' . $i . "' src='" . $placeholderSource . "' data-original='" . $imgsource . $imgname . "' />";
+						echo "delayLoad lazy' alt='" .  $product['meta_keywords'] . ' ' . $i . "' title='" . $product['meta_keywords'] . ' ' . $i . "' src='" . $placeholderSource . "' data-original='" . $imgsource . $imgname . '?' . filemtime_remote($imgsource . $imgname) . "' />";
 					} 
 				}
 				echo "</div>";
@@ -1307,7 +1347,7 @@ function closeout() {
 	// perform check on each found feature
 	while( $rCloseout = mysql_fetch_assoc( $getCloseout ) ) {
 		$i++;
-		if($rCloseout['sold'] == 1) {
+		if($rCloseout['sold'] == 1 || $rCloseout['visible'] == 0) {
 			continue;
 		}
 		// echo out each feature as a list item
@@ -1321,7 +1361,11 @@ function closeout() {
 		}
 		echo "<h2 class='closeout-header'>Item No. " . $rCloseout['item_num'] . "</h2>";
 		echo "<p class='accessory-desc closeout-desc'><a class='pdf-link' target='_blank' href=". DIR_IMAGES . '_closeout' . '/' . $rCloseout['item_num'] . '/' . $rCloseout['item_num'] .'.pdf' . ">View PDF</a></p>" . '<br />';
-		echo "<h2 class='closeout-header'>MSRP: <span class='msrp'>$" . $rCloseout['msrp'] . "</span> Price: $" . $rCloseout['price'] . "</h2>";
+		echo "<h2 class='closeout-header'>";
+		if ($rCloseout['msrp'] == 0.00) { 
+		} else { echo "MSRP: <span class='msrp'>$" . $rCloseout['msrp'] . "</span>";
+		}
+		echo " Price: $" . $rCloseout['price'] . "</h2>"; 
 		echo "<div class='media-container closeout-blueprint ft small animate'>";
 		echo "<a class='image-container animate'>";
 		echo "<img alt='Closeout " . $i . "' title='Closeout " . $i . "' class='animate lb mag-feature closeout";

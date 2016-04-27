@@ -43,7 +43,7 @@ define('SQUEEZR_IMAGE_JPEG_QUALITY', 80);
  *
  * @var boolean
 */
-define('SQUEEZR_IMAGE_SHARPEN', false);
+define('SQUEEZR_IMAGE_SHARPEN', true);
 
 /**
  * Force image sharpening

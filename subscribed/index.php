@@ -35,9 +35,7 @@ if (document.cookie.indexOf("quote_sent") >= 0) {
 <?php
 /**
  *
- * About Highway Products. Telling the story of 
- * the company and the people who work here, including
- * a small timeline showing dates of important events
+ * Page to tell people if they're already subscribed on Aweber
  *
  * @author    Sebastian Inman @sebastian_inman, inherited by Barrett Chamberlain
  * @link      http://www.highwayproducts.com
@@ -60,7 +58,7 @@ include_once('../_includes/quote.php'); ?>
                     </a>
                 </li>
             </ul>
-        <p>Oops! It looks like you're already subscribed. Please call us at 1-800-866-5269 or send us an email at <a href="mailto:sales@highwayproducts.com">sales@highwayproducts.com</a> for assistance.</p>
+        <p>Oops! It looks like you're already subscribed. Please call us at 1-877-690-4679 or send us an email at <a href="mailto:sales@highwayproducts.com">sales@highwayproducts.com</a> for assistance.</p>
         </div>
     </div>
 
