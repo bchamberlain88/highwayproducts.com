@@ -1330,13 +1330,21 @@ function accessories( $accessory_selector ) {
 	}
 }
 
+/**
+ *
+ * Array trimming function
+ * 
+ */
+
+function trim_value(&$value) 
+{ 
+    $value = trim($value); 
+}
 
 /**
  *
  * Create a list of closeout products
- *
  * 
- *
  */
 
 function closeout() {
@@ -1359,8 +1367,32 @@ function closeout() {
 		} else {
 			echo "<h2 class='closeout-header'>Dimensions: " . $rCloseout['dimensions'] . "</h2>";
 		}
+		if($rCloseout['combo'] == 1) {
+			// explode the item num into an array
+			$items = explode( ',', $rCloseout['item_num'] );
+			$len = count($items);
+			array_walk($items, 'trim_value');
+			$comboName = $items[0] . '-combo';
+			echo "<h2 class='closeout-header'>Item Numbers "; 
+			if($len == 2 ) {
+				echo $items[0] . ' and ' . $items[1]; 
+			} else {
+				$i = 0;
+				foreach ($items as $item) {
+					if($i == $len - 1) {
+						echo 'and ' . $item;
+					} else {
+						echo $item . ', ';
+						$i++;
+					}
+				}
+			}
+			echo "</h2>";
+			echo "<p class='accessory-desc closeout-desc'><a class='pdf-link' target='_blank' href=". DIR_IMAGES . '_closeout' . '/' . $comboName . '/' . $comboName .'.pdf' . ">View PDF</a></p>" . '<br />';
+		} else {
 		echo "<h2 class='closeout-header'>Item No. " . $rCloseout['item_num'] . "</h2>";
 		echo "<p class='accessory-desc closeout-desc'><a class='pdf-link' target='_blank' href=". DIR_IMAGES . '_closeout' . '/' . $rCloseout['item_num'] . '/' . $rCloseout['item_num'] .'.pdf' . ">View PDF</a></p>" . '<br />';
+		}
 		echo "<h2 class='closeout-header'>";
 		if ($rCloseout['msrp'] == 0.00) { 
 		} else { echo "MSRP: <span class='msrp'>$" . $rCloseout['msrp'] . "</span>";
@@ -1372,11 +1404,19 @@ function closeout() {
 		if( SET_LAZY_LOAD == 'true' ) {
 			echo " lazy";
 		}
-		echo "' data-source='serve.php?source=".DIR_IMAGES. '_closeout' . $rCloseout['item_num'] . "/&amp;image=" . $rCloseout['item_num'] . '.jpg' . "&amp;thumb=1' data-mfp-src='" . DIR_IMAGES . '_closeout' . '/' . $rCloseout['item_num'] . '/' . $rCloseout['item_num'] .'.jpg' . "' src='". DIR_IMAGES . '_closeout' . '/' . $rCloseout['item_num'] . '/' . $rCloseout['item_num'] . '.jpg' ."' />";
+		if($rCloseout['combo'] == 1) {
+			echo "'d ata-source='serve.php?source=".DIR_IMAGES. '_closeout/' . $comboName . "/&amp;image=" . $comboName . '.jpg' . "&amp;thumb=1' data-mfp-src='" . DIR_IMAGES . '_closeout' . '/' . $comboName . '/' . $comboName .'.jpg' . "' src='". DIR_IMAGES . '_closeout' . '/' . $comboName . '/' . $comboName . '.jpg' ."' />";
+		} else {
+			echo "' data-source='serve.php?source=".DIR_IMAGES. '_closeout' . $rCloseout['item_num'] . "/&amp;image=" . $rCloseout['item_num'] . '.jpg' . "&amp;thumb=1' data-mfp-src='" . DIR_IMAGES . '_closeout' . '/' . $rCloseout['item_num'] . '/' . $rCloseout['item_num'] .'.jpg' . "' src='". DIR_IMAGES . '_closeout' . '/' . $rCloseout['item_num'] . '/' . $rCloseout['item_num'] . '.jpg' ."' />";
+		}
 		echo "</a>";
 		echo "</div>";
 		echo "<div class='feature-info accessory closeout'>";
-		closeoutThumbs($rCloseout['item_num']);
+		if($rCloseout['combo'] == 1) {
+			closeoutThumbs($rCloseout['id'],$comboName);
+		} else {
+			closeoutThumbs($rCloseout['id']);
+		}
 		echo "</div>";
 		echo "</li>";	
 	}
@@ -1503,14 +1543,18 @@ function galleryThumbs( $source = 'product', $selector, $limit = 15 ) {
  *@param string $itemNum : the directory name passed from the closeout function
  */
 
-function closeoutThumbs($itemNum) {
+function closeoutThumbs($id,$comboName) {
 	// select the product from the database
-	$getCloseout = mysql_query( "SELECT * FROM closeout where item_num = '" . $itemNum . "'" );
+	$getCloseout = mysql_query( "SELECT * FROM closeout where id = '" . $id . "'" );
 	$rCloseout = mysql_fetch_assoc($getCloseout);
 	// set the path for the products gallery
 	// check if the path exists
 	//while() {
-		$path = '../_assets/_images/_closeout/' . $itemNum . '/JPEG/';
+	if($rCloseout['combo'] == 1) {
+		$path = '../_assets/_images/_closeout/' . $comboName . '/JPEG/';
+	} else {
+		$path = '../_assets/_images/_closeout/' . $rCloseout['item_num'] . '/JPEG/';
+	}
 		//echo $path . '<br />';
 		//echo 'itemNum is: ' . $itemNum . '<br />';
 		$i = 0;
@@ -1540,7 +1584,11 @@ function closeoutThumbs($itemNum) {
 					if( SET_LAZY_LOAD == 'true' ) {
 						echo " lazy";
 					}
-					echo "' data-group='" . $rCloseout['item_num'] . "' data-id='" . $i . "' data-source='./serve.php?source=" . DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . "&amp;image=".$image."&amp;thumb=1' data-mfp-src='". DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . $image."' itemprop='image' src='" . DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . $image ."' />";
+					if($rCloseout['combo'] == 1) {
+						echo "' data-group='" . $comboName . "' data-id='" . $i . "' data-source='./serve.php?source=" . DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . "&amp;image=".$image."&amp;thumb=1' data-mfp-src='". DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . $image."' itemprop='image' src='" . DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . $image ."' />";
+					} else {
+						echo "' data-group='" . $rCloseout['item_num'] . "' data-id='" . $i . "' data-source='./serve.php?source=" . DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . "&amp;image=".$image."&amp;thumb=1' data-mfp-src='". DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . $image."' itemprop='image' src='" . DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . $image ."' />";
+					}
 				echo "</div>";
 			echo "</a>";
 		}
