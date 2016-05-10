@@ -1,8 +1,8 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-<link rel="stylesheet" type="text/css" href="wp-content/themes/salient/css/combined.css">
-<!--<script type="text/javascript" src="wp-content/themes/salient/js/script.js"></script> -->
+<link rel="stylesheet" type="text/css" href="http://www.highwayproducts.com/news/wp-content/themes/salient/css/combined.css">
+<!--<script type="text/javascript" src="http://www.highwayproducts.com/news/wp-content/themes/salient/js/script.js"></script> -->
 <!-- Meta Tags -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 

@@ -2,7 +2,7 @@
 
 /**
  *
- * Careers page.
+ * Careers page.  Static page which has links to various pdfs which are within the same dir.
  *
  * @author    Sebastian Inman @sebastian_inman, inherited by Barrett Chamberlain
  * @link      http://www.highwayproducts.com
@@ -134,19 +134,6 @@ Highway Products is looking for experienced painters to join our team immediatel
             <!-- load the products testimonials - limit: 3 -->
             <?php productTestimonials( $product_selector, SET_LIMIT_PRODUCT_TESTIMONIALS ); ?>
         </div>
-        <?php
-        $input_id  = 0;
-        $aweber_id = 0;
-        $aweber_js = 0;
-        $getSales = mysql_query("SELECT * FROM sales_team");
-        while($sales = mysql_fetch_assoc($getSales)){
-            $sales_covers = explode(', ', $sales['products_covered']);
-            if(in_array($category['selector'], $sales_covers)){
-                $input_id  = $sales['input_id'];
-                $aweber_id = $sales['aweber_id'];
-                $aweber_js = $sales['aweber_js'];
-            }
-        } ?>
         <div class='sidebar-signup'>
             <h1 class="newsSign">Newsletter Signup</h1>
             <p>Receive special promotional offers, discount opportunities, and news updates!</p>

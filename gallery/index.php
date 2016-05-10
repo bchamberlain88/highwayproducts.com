@@ -2,12 +2,12 @@
 
 /**
  *
- * Contact a sales representative or find us online
+ * Display gallery videos and/or images.  Image thumbnails are generated with db entered hash and filename automatically so they aren't continuously generated
  *
- * @author    Sebastian Inman @sebastian_inman, inherited by Barrett Chamberlain
+ * @author    Barrett Chamberlain
  * @link      http://www.highwayproducts.com
  * @license   http://www.highwayproducts.com/docs/license.txt
- * @copyright Highway Products Inc. 2015
+ * @copyright Highway Products Inc. 2016
  *
  */
 
@@ -101,7 +101,7 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
                 $thumbPath = '/_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $product_selector . '/_gallery/_thumbnails/';
 
             }
-            //if it's a sub item
+            //if it's a sub-category
             if($product === false) {
                 $path = '../_assets/_images/_products/' . $subItem['parent'] . '/' . $subItem['selector'] . '/_gallery/';
                 $convPath2 = '/_assets/_images/_products/' . $subItem['parent'] . '/' . $subItem['selector'] . '/_gallery/';
@@ -113,13 +113,11 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
                 $i = 0;
                 // open the directory
                 $handle = opendir( $path );
-                
-                // perform a check for each file found in the directory
+                //put files into array and sort them in predictable order
                 while ($files[] = readdir($handle));
                 natsort($files);
                 foreach ($files as $image) {
-                //while( $image = $files ) {
-                    // check if image is a file we want
+                    // perform a check for each file found in the directory
                     if( $image != '.' && $image != '..' && $image != "Thumbs.db" && $image != "_notes" && $image != "_thumbnails" && $image != "_gallery") {
                         //set random var for gallery identifier
                         $random = mt_rand(100000, 999999);

@@ -3,7 +3,7 @@
 /**
  *
  * 
- * Display a list of accessories for a given product.
+ * Closeout section for reduced-price items.  Draws information from closeout table.  Directories are selected based on item number or first item number in combo plus "-combo".
  * 
  *
  * @author    Barrett Chamberlain
@@ -35,6 +35,7 @@ include_once('../_includes/newsletter.php');
             <p class="product-copy four_eighty">Here you can view a list of our reduced-price closeout items.</p>
         <ul class="feature-list accessory">
             <?php 
+            //get closeout information.  Function links to closeoutThumbs function
                 closeout();
             ?> 
         </ul>
@@ -101,19 +102,6 @@ include_once('../_includes/newsletter.php');
             <!-- load the products testimonials - limit: 3 -->
             <?php productTestimonials( $product_selector, SET_LIMIT_PRODUCT_TESTIMONIALS ); ?>
         </div>
-        <?php
-        $input_id  = 0;
-        $aweber_id = 0;
-        $aweber_js = 0;
-        $getSales = mysql_query("SELECT * FROM sales_team");
-        while($sales = mysql_fetch_assoc($getSales)){
-            $sales_covers = explode(', ', $sales['products_covered']);
-            if(in_array($category['selector'], $sales_covers)){
-                $input_id  = $sales['input_id'];
-                $aweber_id = $sales['aweber_id'];
-                $aweber_js = $sales['aweber_js'];
-            }
-        } ?>
         <div class='sidebar-signup'>
             <h1 class="newsSign">Newsletter Signup</h1>
             <p>Receive special promotional offers, discount opportunities, and news updates!</p>

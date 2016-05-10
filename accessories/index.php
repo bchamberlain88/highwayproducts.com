@@ -16,6 +16,7 @@ session_start();
 include_once('../_includes/meta.inc.php');
 include_once('../_includes/quote.php'); 
 include_once('../_includes/newsletter.php');
+//get information based on session variable set on product page
 $getProduct = mysql_query('SELECT * FROM product_categories_items WHERE selector = "'.$_SESSION['accessory_selector'].'" LIMIT 1');
 $product = mysql_fetch_assoc($getProduct);
 ?>
@@ -26,10 +27,10 @@ $product = mysql_fetch_assoc($getProduct);
     <div class='wrapper fs'>
         <div class='left-content'>
             <ul class='breadcrumbs' class='breadcrumbs' itemscope itemtype="http://schema.org/BreadcrumbList">
-                <li itemprop="itemListElement" itemscope
-      itemtype="http://schema.org/ListItem"><a class='animate' href='<?php echo DIR_ROOT; ?>' itemprop="item">
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <a class='animate' href='<?php echo DIR_ROOT; ?>' itemprop="item">
                     <i class='home-icon fa fa-home'></i> <span itemprop="name">Highway Products</span> <i class='fa fa-angle-right'></i>
-                </a>
+                    </a>
                 <meta itemprop="position" content="1" />
                 </li>
                 <li>
@@ -45,6 +46,7 @@ $product = mysql_fetch_assoc($getProduct);
                 accessories($_SESSION['accessory_selector']);
             ?> 
         </ul>
+        <div class="leftSpacer"></div>
         </div>
         <div class='right-content'>
         <?php // include addthis api if sharing is allowed
@@ -108,19 +110,6 @@ $product = mysql_fetch_assoc($getProduct);
             <!-- load the products testimonials - limit: 3 -->
             <?php productTestimonials( $product_selector, SET_LIMIT_PRODUCT_TESTIMONIALS ); ?>
         </div>
-        <?php
-        $input_id  = 0;
-        $aweber_id = 0;
-        $aweber_js = 0;
-        $getSales = mysql_query("SELECT * FROM sales_team");
-        while($sales = mysql_fetch_assoc($getSales)){
-            $sales_covers = explode(', ', $sales['products_covered']);
-            if(in_array($category['selector'], $sales_covers)){
-                $input_id  = $sales['input_id'];
-                $aweber_id = $sales['aweber_id'];
-                $aweber_js = $sales['aweber_js'];
-            }
-        } ?>
         <div class='sidebar-signup'>
             <h1 class="newsSign">Newsletter Signup</h1>
             <p>Receive special promotional offers, discount opportunities, and news updates!</p>

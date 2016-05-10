@@ -1,10 +1,10 @@
 <?php if($product['no_style'] == 1) { } else { 
-            if($product['id'] == 30 || $product['id'] == 31) { 
-                include_once('./_includes/truckslide_style.php');
-                 } else { ?>
-            <ul class='product-styles'>
-                <h1>Color &amp; Style Options</h1><br />
-                <h4>Please click one of the boxes for more information</h4><br />
+    if($product['id'] == 30 || $product['id'] == 31) { 
+        include_once('./_includes/truckslide_style.php');
+    } else { ?>
+        <ul class='product-styles'>
+            <h1>Color &amp; Style Options</h1><br />
+            <h4>Please click one of the boxes for minformation</h4><br />
                 <li class='style-option' data-name='Silverback' data-description='Our smooth aluminum finish makes quick work of sliding equipment in and sweeping debris out. Aluminum only requires minimal polishing to keep it looking like brand new.' data-style='silver'>
                     <img alt='Highway Products stlye options: Silverback' src='<?php echo DIR_IMAGES; ?>_misc/_colors/color-style-silverback.jpg' />
                 </li>
@@ -27,6 +27,7 @@
                     <span class='fa fa-eyedropper'></span>
                     <div class='custom-colors'></div>
                 </li>
-                <div class='selected-style'></div>
-            </ul>
-        <?php } } ?>
+            <div class='selected-style'></div>
+        </ul>
+    <?php } 
+} ?>

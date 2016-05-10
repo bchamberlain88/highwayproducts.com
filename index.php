@@ -7,14 +7,16 @@
  * @author    Sebastian Inman @sebastian_inman, inherited by Barrett Chamberlain
  * @link      http://www.highwayproducts.com
  * @license   http://www.highwayproducts.com/docs/license.txt
- * @copyright Highway Products Inc. 2015
+ * @copyright Highway Products Inc. 2016
  *
  */
 session_start();
+//url var q used to store selector for items, masked by .htaccess
 if($_GET['q']){
-$product_selector = $_GET['q']; 
+    $product_selector = $_GET['q']; 
 }
 include_once('./_includes/meta.inc.php');
+//includes to determine appropriate quote and newsletter form codes for aweber
 include_once('./_includes/quote.php');
 include_once('./_includes/newsletter.php');
  ?>
@@ -42,130 +44,90 @@ $product_selector = $_GET['q'];
 
     $getMainCat = mysql_query('SELECT * FROM product_categories_main WHERE url = "'.$product_selector.'"');
     if(mysql_num_rows($getMainCat) > 0){
-        $mainCat = mysql_fetch_assoc($getMainCat); ?>
+        $mainCat = mysql_fetch_assoc($getMainCat); 
 
-    <!-- pickup-trucks -->    
-
-    <?php if($product_selector == 'aluminum-pickup-truck-accessories') { ?>
-         <div class='wrapper fs'>
-            <div class='menu-content'>
-                <?php include( './_includes/dropdown_truck_acc.php' ); ?>
-            </div>
-        </div>
-
-        <!-- semi-trucks -->
-
-        <?php } elseif($product_selector == 'aluminum-semi-truck-accessories') { ?>
-         <div class='wrapper fs'>
-            <div class='menu-content'>
-                 <?php include( './_includes/dropdown_semi_trucks.php' ); ?>
-             </div>
-        </div>
-
-                <!-- hunting-accessories -->
-
-        <?php } elseif($product_selector == 'hunting-accessories') { ?>
+    //use appropriate include depending on which main category has been selected
+    switch($product_selector) {
+        case 'aluminum-pickup-truck-accessories': ?>
             <div class='wrapper fs'>
                 <div class='menu-content'>
-                    <ul class='nav-list'>
-                        <div class='list active no-shadow' data-list='flatbeds' id='list-flatbeds'>
-                            <div class='wrapper items'>
-                                <?php
-                                $getItems = mysql_query('SELECT * FROM product_categories_items WHERE parent = "hunting-accessories" ORDER BY oid ASC');
-                                $num_items = mysql_num_rows($getItems);
-                                while($item = mysql_fetch_assoc($getItems)){
-                                    $getSub = mysql_query("SELECT * FROM product_categories_sub WHERE selector = '".$item['parent']."' LIMIT 1");
-                                    $sub = mysql_fetch_assoc($getSub); ?>
-                                    <a class='items-block one-fourth item' id='<?php echo $item['selector']; ?>' href="<?php echo DIR_ROOT . $item['selector']; ?>">
-                                        <div class='item-block-content'>
-                                            <img class='item-block-thumb' src='<?php echo DIR_IMAGES . '_products/' .$sub['parent'] . '/' . $item['parent'] . '/' . $item['selector']. '/' . $item['selector'].'-thumb.jpg'; ?>' />
-                                            <span><?php echo $item['name']; ?></span>
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </ul>
+                    <?php include( './_includes/dropdown_truck_acc.php' ); ?>
                 </div>
             </div>
-
-        <!-- law-enforcement -->
-
-        <?php } elseif($product_selector == 'aluminum-law-enforcement-accessories') { ?>
+            <?php break;
+        case 'aluminum-semi-truck-accessories': ?>
+            <div class='wrapper fs'>
+                <div class='menu-content'>
+                    <?php include( './_includes/dropdown_semi_trucks.php' ); ?>
+                </div>
+            </div>
+            <?php break;
+        case 'hunting-accessories': ?>
+            <div class='wrapper fs'>
+                <div class='menu-content'>
+                    <?php include( './_includes/dropdown_hunting_acc.php' ); ?>
+                </div>
+            </div>
+            <?php break;
+        case 'aluminum-law-enforcement-accessories': ?>
             <div class='wrapper fs'>
                 <div class='menu-content'>
                     <?php include( './_includes/dropdown_law_enforcement.php' ); ?>
                 </div>
             </div>
-
-        <!-- custom-fabrication -->
-
-        <?php } elseif($product_selector == 'custom-aluminum-fabrication') { ?>
-<div class='wrapper fs'>
-            <div class='menu-content'>
-                <?php include( './_includes/dropdown_custom_fabrication.php' ); ?>
-             </div>
-        </div>
-
-        <!-- specialty-products -->
-
-        <?php } elseif($product_selector == 'specialty-products') {
-        redirect('custom-aluminum-fabrication');
-
-        //all other main category pages
-
-        } else {
+            <?php break;
+        case 'custom-aluminum-fabrication': ?>
+            <div class='wrapper fs'>
+                <div class='menu-content'>
+                    <?php include( './_includes/dropdown_custom_fabrication.php' ); ?>
+                </div>
+            </div>
+            <?php break; 
+        case 'specialty-products': 
+            redirect('custom-aluminum-fabrication');
+            break;
+        default:
             include_once( './_includes/main_cat_default.php' );
-            } ?>
+    } ?>
     <?php }else{
     $getSub = mysql_query('SELECT * FROM product_categories_sub WHERE url = "'.$product_selector.'"');
     if(mysql_num_rows($getSub) > 0){
         $sub = mysql_fetch_assoc($getSub);
         $getSubCat = mysql_query('SELECT * FROM product_categories_main WHERE selector = "'.$sub['parent'].'"');
-        $returnSubCat = mysql_fetch_assoc($getSubCat); ?>
+        $returnSubCat = mysql_fetch_assoc($getSubCat); 
 
-        <!-- service-bodies -->
-
-        <?php if($product_selector == 'aluminum-truck-service-bodies') { ?>
-            <div class='wrapper fs'>
-                <div class='menu-content'>
-                <?php include( './_includes/dropdown_service_bodies.php' ); ?>
+        //use appropriate include depending on which sub category has been selected
+        switch($product_selector) {
+            case 'aluminum-truck-service-bodies' ?>
+                <div class='wrapper fs'>
+                    <div class='menu-content'>
+                    <?php include( './_includes/dropdown_service_bodies.php' ); ?>
+                    </div>
                 </div>
-            </div>
-
-        <!-- aluminum-flatbeds -->
-
-        <?php } elseif($product_selector == 'aluminum-truck-flatbeds') { ?>
-            <div class='wrapper fs'>
-                <div class='menu-content'>
-                    <?php include( './_includes/dropdown_aluminum_flatbeds.php' ); ?>
+                <?php break;
+            case 'aluminum-truck-flatbeds': ?>
+                <div class='wrapper fs'>
+                    <div class='menu-content'>
+                        <?php include( './_includes/dropdown_aluminum_flatbeds.php' ); ?>
+                    </div>
                 </div>
-            </div>
-
-        <!-- pickup-packs -->
-
-        <?php } elseif($product_selector == 'pickup-packs') { ?>
-            <div class='wrapper fs'>
-                <div class='menu-content'>
-                    <?php include( './_includes/dropdown_pickup_packs.php' ); ?>
+                <?php break;
+            case 'pickup-packs': ?>
+                <div class='wrapper fs'>
+                    <div class='menu-content'>
+                        <?php include( './_includes/dropdown_pickup_packs.php' ); ?>
+                    </div>
                 </div>
-            </div>
-
-        <!-- tow-bodies -->
-
-        <?php } elseif($product_selector == 'aluminum-tow-bodies') { ?>
-            <div class='wrapper fs'>
-                <div class='menu-content'>
-                    <?php include( './_includes/dropdown_tow_bodies.php' ); ?>
+                <?php break;
+            case 'aluminum-tow-bodies': ?>
+                <div class='wrapper fs'>
+                    <div class='menu-content'>
+                        <?php include( './_includes/dropdown_tow_bodies.php' ); ?>
+                    </div>
                 </div>
-            </div>
-
-        <!-- all other sub-category pages -->
-
-        <?php } else {
-
-            include_once( './_includes/sub_cat_default.php' );
-
+                <?php break;
+            default:
+                include_once( './_includes/sub_cat_default.php' );
         } ?>
 
     <?php } else {
@@ -206,7 +168,7 @@ $product_selector = $_GET['q'];
 }
 </script>';
     //if it's a single breadcrumb, get parent based on product instead of sub-category
-    if($product['single_crumb'] == 1) { 
+    if($product['is_base'] == 1) { 
         $getMainCategory = mysql_query('SELECT * FROM product_categories_main WHERE selector = "'.$product['parent'].'"');
     } else {
         $getMainCategory = mysql_query('SELECT * FROM product_categories_main WHERE selector = "'.$category['parent'].'"');
@@ -215,8 +177,9 @@ $product_selector = $_GET['q'];
     ?>
     <div class='slider-container'>
         <div class='slider'>
-            <!-- show product slides -->
-            <?php slides( 'product', $product_selector, SET_LIMIT_SLIDES ); ?>
+            <?php
+            //generate slides 
+            slides( 'product', $product_selector, SET_LIMIT_SLIDES ); ?>
         </div>
     </div>
     <div class='selectors-container'>
@@ -250,25 +213,23 @@ $product_selector = $_GET['q'];
                 //special case for highwayman since it has no sub or main page
                 ?>  
                 <ul class='breadcrumbs' itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope
-      itemtype="http://schema.org/ListItem">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                         <a class='animate' href='<?php echo DIR_ROOT; ?>' itemprop="item">
                             <i class='home-icon fa fa-home'></i> <span itemprop="name">Highway Products</span> <i class='fa fa-angle-right'></i>
                         </a>
                     <meta itemprop="position" content="1" />
                     </li>
                     <li class="lastCrumb"><?php echo $product['name']; ?></li>
-                </ul> <?php } else { ?>
+                </ul> 
+            <?php } else { ?>
                 <ul class='breadcrumbs' itemscope itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope
-      itemtype="http://schema.org/ListItem">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                         <a class='animate' href='<?php echo DIR_ROOT; ?>' itemprop="item">
                             <i class='home-icon fa fa-home'></i> <span itemprop="name">Highway Products</span> <i class='fa fa-angle-right'></i>
                         </a>
                     <meta itemprop="position" content="1" />
                     </li>
-                    <li itemprop="itemListElement" itemscope
-      itemtype="http://schema.org/ListItem">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                         <a class='animate' href='<?php echo DIR_ROOT . $mainCategory['url']; ?>' itemprop="item"><span itemprop="name"><?php echo $mainCategory['category']; ?></span> 
                             <i class='fa fa-angle-right'></i>
                         </a>
@@ -276,9 +237,8 @@ $product_selector = $_GET['q'];
                     </li>
                     <?php 
                     //if the breadcrumb only goes one level, omit extra crumb
-                    if($product['single_crumb'] == 1) { } else { ?>
-                        <li itemprop="itemListElement" itemscope
-      itemtype="http://schema.org/ListItem">
+                    if($product['is_base'] == 1) { } else { ?>
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                             <a class='animate' href='<?php echo DIR_ROOT . $category['url']; ?>' itemprop="item"><span itemprop="name"><?php echo $category['name']; ?></span> 
                                 <i class='fa fa-angle-right'></i>
                             </a>
@@ -303,14 +263,12 @@ $product_selector = $_GET['q'];
                     <span class='hide four_eighty'>Rated</span> <span itemprop='ratingValue' itemprop='rating'><?php echo $rating['average']; ?></span> out of 5 stars<span class='count hide four_eighty'><span itemprop='reviewCount'><?php echo $rating['ratings']; ?></span> <span class='hide four_eighty'>Votes</span></span>
                 </label>
             </ul>
-            <!--
-            <a class='get-quote animate'><i class='fa fa-lg fa-send'></i>Request a free quote</a>
-            -->
             <?php
             //if we want to show video above description
             if($video['video_above_desc'] == 1) {
                 showVideo( 'product', $product_selector );
             } 
+            //generate three images above gallery link and the link itself
             galleryImageThumbs('product', $product_selector);
             ?>
             <p class='product-copy four_eighty'>
@@ -325,10 +283,11 @@ $product_selector = $_GET['q'];
     <?php } else { ?>
         <ul class='feature-list'>
         <?php } ?>
-        <!-- include feature list -->
-        <?php include_once('./_includes/features.php'); ?>
-        <!-- include style options -->
-        <?php include_once('./_includes/style.php'); ?>
+        <?php 
+        //include feature list
+        include_once('./_includes/features.php'); 
+        //include style options
+        include_once('./_includes/style.php'); ?>
         <?php if($product['has_accessories'] == 1) { 
             //if product has accessories, set session var and display image
             $_SESSION['accessory_selector'] = $product_selector;
@@ -412,22 +371,10 @@ $product_selector = $_GET['q'];
         <div class='side-sep'></div>
         <div class='testimonials'>
             <h1>Customer Reviews</h1>
-            <!-- load the products testimonials - limit: 3 -->
-            <?php productTestimonials( $product_selector, SET_LIMIT_PRODUCT_TESTIMONIALS ); ?>
+            <?php 
+            //load the products testimonials - limit: 3
+            productTestimonials( $product_selector, SET_LIMIT_PRODUCT_TESTIMONIALS ); ?>
         </div>
-        <?php
-        $input_id  = 0;
-        $aweber_id = 0;
-        $aweber_js = 0;
-        $getSales = mysql_query("SELECT * FROM sales_team");
-        while($sales = mysql_fetch_assoc($getSales)){
-            $sales_covers = explode(', ', $sales['products_covered']);
-            if(in_array($category['selector'], $sales_covers)){
-                $input_id  = $sales['input_id'];
-                $aweber_id = $sales['aweber_id'];
-                $aweber_js = $sales['aweber_js'];
-            }
-        } ?>
         <div class='sidebar-signup'>
             <h1 class="newsSign">Newsletter Signup</h1>
             <p>Receive special promotional offers, discount opportunities, and news updates!</p>
@@ -459,7 +406,6 @@ $product_selector = $_GET['q'];
 
 <?php // include disqus api if commenting is allowed
 if( SET_COMMENTS == 'true' ) { ?>
- <!-- include disqus script -->
     <script type="text/javascript">
         var disqus_shortname = 'highwayp';
         (function() {
@@ -471,21 +417,16 @@ if( SET_COMMENTS == 'true' ) { ?>
 
 <?php // include addthis api if sharing is allowed
 if( SET_SHARING == 'true' ) { ?>
-    <!-- include addthis script -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53e12d2343fe8b67"></script>
 <?php } ?>
 
 <?php /* THIS IS THE MAIN HOMEPAGE FROM HERE DOWN */
 }else{ ?>
-
-<!-- start main container -->
 <div class='container sb'>
-    <!-- include main slider -->
-    <?php include_once('./_includes/main_slider.php'); ?>
-    <!-- start page wrapper - max-width: 1260px -->
+    <?php 
+    //include main slider
+    include_once('./_includes/main_slider.php'); ?>
     <div class='wrapper fs'>
-
-        <!-- start left content - main container -->
         <div class='left-content'>
         <div class="googleSearch">
         <script>
@@ -505,35 +446,30 @@ if( SET_SHARING == 'true' ) { ?>
 
             <a class='home-phone' href='tel:+1-877-690-4679'><span class='fa fa-phone'></span>1-877-690-4679</a>
 
-            <!-- introduction copy -->
             <h1><span class='hide four_eighty'>Welcome to </span>Highway Products Inc.</h1>
             <p class='intro-copy'>Highway Products Inc. is proudly one of the world's premier manufacturers of aluminum truck tool boxes, service truck bodies,
             aluminum flatbeds for pickup trucks and accessories for pickup trucks and semi-trucks. Designs are taken to the leading edge
             with the highest quality innovative products available. Our products are designed and built in the U.S.A. and exported globally.
             We will customize anything you can possibly dream up and love taking on a challenge!</p>
-            <!-- end introduction copy -->
 
             <iframe class='intro-video player youtube' height='0' src='https://www.youtube.com/embed/IIi1WeH3zR8?wmode=transparent' allowfullscreen></iframe>
 
-            <!-- customer testimonials -->
             <h1>What <span class='hide four_eighty'>our </span>customers are saying</h1>
             <ul class='testimonials'>
-                <!-- load random testimonials, limit: 3 -->
-                <?php testimonials( 'all', null, 3); ?>
+                <?php 
+                //load random testimonials, limit: 3
+                testimonials( 'all', null, 3); ?>
             </ul>
-            <!-- end customer testimonials -->
 
-            <!-- list of featured products -->
            <ul class='related-products'>
                 <h1>Featured Products <i class='fa fa-lg fa-refresh refresh-list animate'></i></h1>
                 <div class='refresh'>
-                    <!-- load random list of featured products, limit: 9 -->
-                    <?php featuredProducts(9); ?>
+                    <?php 
+                    //load random list of featured products, limit: 9
+                    featuredProducts(9); ?>
                 </div>
             </ul>
-            <!-- end list of featured products -->
 
-            <!-- newsletter signup form -->
             <div class='newsletter-signup newsletter-form'>
                 <h1>Subscribe To Our Newsletter<i class='fa fa-lg fa-times close-newsletter'></i></h1>
                 <p>Enter your email address to subscribe to the Highway Products monthly newsletter.
@@ -552,15 +488,13 @@ if( SET_SHARING == 'true' ) { ?>
     }(document, "script", "aweber-wjs-6bhepjf7u"));
 </script>
             </div>
-            <!-- end newsletter signup form -->
 
             <h1>Highway Products is trusted by:</h1>
             <img alt="Stanford, U.S. Army, U.S. Department of the Interior, U.S. Forest Service, FBI, FedEx" src='http://www.highwayproducts.com/_assets/_images/highway_products_trust.png' style="width: 100%;" />
 
         </div>
-        <!-- end left content -->
+        <!-- .left-content -->
 
-        <!-- start right content -->
         <div class='right-content'>
 
             <?php // include addthis api if sharing is allowed
@@ -592,34 +526,30 @@ if( SET_SHARING == 'true' ) { ?>
 
             <?php // show facebook like box if allowed
             if( SET_FACEBOOK_LIKES == 'true' ) { ?>
-                <!-- facebook likebox -->
                 <div class='fb-like-box hide eight_hundred' data-width='347' data-href='https://www.facebook.com/HighwayProducts' data-colorscheme='light' data-show-faces='true' data-header='false' data-stream='false' data-show-border='false'></div>
-                <!-- end facebook likebox -->
                 <div class='side-sep hide eight_hundred'></div>
             <?php } ?>
 
             <?php // show twitter feed if allowed
             if( SET_TWITTER_FEED == 'true' ) { ?>
-                <!-- twitter news feed -->
                 <a class='twitter-timeline hide eight_hundred' style="height: 400px;" href='https://twitter.com/HighwayProducts' data-widget-id="530432710225838080">Tweets by @HighwayProducts</a>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
                 if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
                 fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                <!-- end twitter news feed -->
                 <div class='side-sep hide eight_hundred'></div>
             <?php } ?>
 
         </div>
-        <!-- end right content -->
+        <!-- .right-content -->
 
     </div>
-    <!-- end page wrapper -->
+    <!-- .container .sb -->
 
 <?php // include addthis api if sharing is allowed
 if( SET_SHARING == 'true' ) { ?>
-    <!-- include addthis script -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53e12d2343fe8b67"></script>
 <?php }} ?>
 
-<!-- include the site footer and javascript files -->
-<?php include_once('./_includes/footer.inc.php'); ?>
+<?php 
+//include the site footer and javascript files
+include_once('./_includes/footer.inc.php'); ?>

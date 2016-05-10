@@ -87,7 +87,7 @@ function makeAcro($name) {
 
 /**
  *
- * Redirect to a specific page
+ * Redirect to a specific page using javascript to allow redirection after headers being sent.
  *
  * @param string $url : url to redirect to
  *
@@ -107,9 +107,8 @@ function redirect($url) {
  * Check if the current url is a page that exists
  * If it doesn't, throw a 404 error
  *
- * @param string $base : the base url of the site. default: DIR_ROOT ('www.highwayproducts.com')
- * @param string $page : the page parameter determining the product being viewed
- * @return             : redirect to the current url if necessary
+ * @param string $pageType : used to determine whether the page is a product or not
+ * @param string $selector : current selector of the referring page
  *
  */
 
@@ -154,8 +153,8 @@ function redirect($url) {
  * Check for set meta title attribute for page
  * 
  *
- * @param string $product_selector : current url of the page minus the directory root
- * @return : meta title for page
+ * @param string $product_selector : selector of the page
+ * @return string $pageTitle: meta title for page
  *
  */
 
@@ -201,26 +200,28 @@ function titleExists($product_selector) {
  			return $rCheckCat['meta_title'];
  		}
  	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/about/') {
- 		return 'About Us | Highway Products, Inc';
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/reviews/') {
- 		return 'Reviews | Highway Products, Inc';
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/order/') {
- 		return 'How to Buy | Highway Products, Inc';
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/warranty/') {
- 		return 'Warranty | Highway Products, Inc';
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/contact/') {
- 		return 'Contact Us | Highway Products, Inc';
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/closeout/') {
- 		return 'Closeout Section | Highway Products, Inc';
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/careers/') {
- 		return 'Careers | Highway Products, Inc';
+ 	switch($host) {
+ 		case $_SERVER['SERVER_NAME'] . '/about/':
+ 			return 'About Us | Highway Products, Inc';
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/reviews/':
+ 			return 'Reviews | Highway Products, Inc';
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/order/':
+ 			return 'How to Buy | Highway Products, Inc';
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/warranty/':
+ 			return 'Warranty | Highway Products, Inc';
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/contact/':
+ 			return 'Contact Us | Highway Products, Inc';
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/closeout/':
+ 			return 'Closeout Section | Highway Products, Inc';
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/careers/':
+ 			return 'Careers | Highway Products, Inc';
+ 			break;
  	}
 }
 
@@ -276,32 +277,34 @@ function descExists($product_selector) {
  			return $rCheckCat['meta_description'];
  		}
  	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/about/') {
- 		return 'Our diverse product lines include standard and custom lines of semi as well as pickup truck boxes, cab protectors, guards, truck flatbeds, RV tow bodies, ramps, cargo slides, and service bodies as well. We are the leader and very well known for our custom capability.';
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/contact/') {
- 		return "Do you have any questions or comments about our products or services? Don't hold back! Our sales team is happy to help with any concerns you may have. Just fill out the form below and press the submit button to send your message off to us, and we will respond to your message as soon as we can!";
- 	}
- 	 if($host == $_SERVER['SERVER_NAME'] . '/order/') {
- 		return 'Placing a custom order is as easy as filling out an online form, and sending it to one of our sales representatives!';
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/reviews/') {
- 		return 'Here at Highway Products Inc. we do out best to make our customers happy! Here is what some of those customers have to say.';
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/warranty/') {
- 		return 'Highway Products Inc. makes warranties and refunds easy! Our warranty covers everything from defects in workmanship, to lost keys!';
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/closeout/') {
- 		return 'Here you can view a list of our reduced-price closeout items';
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/careers/') {
- 		return 'Join our team!';
+ 	switch($host) {
+ 		case $_SERVER['SERVER_NAME'] . '/about/':
+ 			return 'Our diverse product lines include standard and custom lines of semi as well as pickup truck boxes, cab protectors, guards, truck flatbeds, RV tow bodies, ramps, cargo slides, and service bodies as well. We are the leader and very well known for our custom capability.';
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/contact/':
+ 			return "Do you have any questions or comments about our products or services? Don't hold back! Our sales team is happy to help with any concerns you may have. Just fill out the form below and press the submit button to send your message off to us, and we will respond to your message as soon as we can!";
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/order/':
+ 			return 'Placing a custom order is as easy as filling out an online form, and sending it to one of our sales representatives!';
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/reviews/':
+ 			return 'Here at Highway Products Inc. we do out best to make our customers happy! Here is what some of those customers have to say.';
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/warranty/':
+ 			return 'Highway Products Inc. makes warranties and refunds easy! Our warranty covers everything from defects in workmanship, to lost keys!';
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/closeout/':
+ 			return 'Here you can view a list of our reduced-price closeout items';
+ 			break;
+ 		case $_SERVER['SERVER_NAME'] . '/careers/':
+ 			return 'Join our team!';
+ 			break;
  	}
 }
 
 /**
  *
- * Encrypt provided string with a custom hash
+ * Encrypt provided string with a custom hash, used to be used to encrypt image path (not sure why)
  *
  * @param string $string : the string to be encrypted
  * @return               : encrypted string
@@ -412,10 +415,10 @@ function gravatar( $email, $s = 80, $d = 'mm', $r = 'pg', $img = false, $atts = 
 
 /**
  *
- * Sperates a group of key words seperated by ',' | ', ' into a string
+ * Separates a group of key words separated by ',' | ', ' into a string
  *
  * @param string $keys : the supplied email address
- * @return             : string with words seperated by spaces
+ * @return             : string with words separated by spaces
  *
  */
 
@@ -428,9 +431,9 @@ function keywords( $keys ) {
 
 /**
  *
- * Seperate the category array into individual categories
+ * Separate the category array into individual categories
  *
- * @param array $cats : the categories seperated by ', '
+ * @param array $cats : the categories separated by ', '
  * @return            : each category as a link
  *
  */
@@ -444,9 +447,6 @@ function categories( $cats ) {
 		echo "<a class='animate' itemprop='category' cotnent='" . $category . "' >" . $category . "</a>";
 	}
 }
-
-
-
 
 /**
  *
@@ -463,9 +463,6 @@ function fixDate( $date ) {
 	return date( 'F d, Y', $time );
 }
 
-
-
-
 /**
  *
  * Return just the year from an entered MySQL timestamp date
@@ -481,15 +478,9 @@ function getYear( $date ) {
 	return date( 'Y', $time );
 }
 
-
-
-
 /**
  *
- * Returns a list of featured products from the MySQL database
- *
- * @param number $l : limits the number of results returned
- * @return          : list items for each product with an 'is_featured' value of 1
+ * Returns all visible products as unordered list
  *
  */
 
@@ -539,8 +530,6 @@ function allProducts() {
 
 }
 
-
-
 /**
  *
  * Returns a list of featured products from the MySQL database
@@ -586,9 +575,6 @@ function featuredProducts( $l ) {
 	    }
 	}
 }
-
-
-
 
 /**
  *
@@ -637,8 +623,7 @@ function relatedProducts( $selector, $limit = 9 ) {
 				if( $related['thumbnail'] == 'null' ) {
 					// no thumnail - use the default
 					$path = DIR_IMAGES . '_products/product-thumb.jpg';
-				} elseif( $related['is_base'] == '1' )
- 						{
+				} elseif( $related['is_base'] == '1' ) {
 					// base-level product
 					// if main-level parent
  					if($category === false) {
@@ -672,8 +657,6 @@ function relatedProducts( $selector, $limit = 9 ) {
 		echo "<li><p>No related products to show at this time</p></li>";
 	}
 }
-
-
 
 /**
  *
@@ -709,9 +692,6 @@ function slideText( $source = 'product', $selector, $slide, $financed ) {
 		// no slides were dount - kill the function
 	}
 }
-
-
-
 
 /**
  *
@@ -913,9 +893,6 @@ function pageSlides( $dir, $limit ) {
 	}
 }
 
-
-
-
 /**
  *
  * Generate a product rating out of 5 stars
@@ -955,9 +932,6 @@ function rating( $source = 'product', $selector ) {
 	return $ratingInfo;
 }
 
-
-
-
 /**
  *
  * Create the visual star ratings for the product
@@ -980,9 +954,6 @@ function printStars( $rating ) {
 		echo"' data-star='".( $i+1 )."'></li>";
 	}
 }
-
-
-
 
 /**
  *
@@ -1013,9 +984,6 @@ function timeline() {
 		// close up that event element
 	}
 }
-
-
-
 
 /**
  *
@@ -1105,9 +1073,6 @@ function testimonials( $source = 'product', $selector = null, $limit ) {
 	}
 }
 
-
-
-
 /**
  *
  * Create a list of testimonials for the sidebar that have been approved
@@ -1162,9 +1127,6 @@ function productTestimonials( $selector = null, $limit = 3 ) {
 		echo "<p>It looks like no one has written a testimonial for this product yet. Be the first one to write a review!</p>";
 	}
 }
-
-
-
 
 /**
  *
@@ -1293,7 +1255,7 @@ function features( $source = 'product', $selector, $limit = 0 ) {
  *
  * Create a list of product accessories with images
  *
- * 
+ * @param $accessory_selector: $_SESSION['accessory_selector'] defined on a product page
  *
  */
 
@@ -1302,9 +1264,9 @@ function accessories( $accessory_selector ) {
 	$getAccessories = mysql_query( "SELECT * FROM product_accessories WHERE selector = '" . $accessory_selector . "'" );
 	// set accessory counter to zero
 	$i = 0;
-	// perform check on each found feature
+	// perform check on each found accessory
 	while( $rAccessories = mysql_fetch_assoc( $getAccessories ) ) {
-		// echo out each feature as a list item
+		// echo out each accessory as a list item
 		echo "<li class='feature";
 		if($feature['has_video'] == 1){
 			echo ' video';
@@ -1350,15 +1312,15 @@ function trim_value(&$value)
 function closeout() {
 	$getCloseout = mysql_query('SELECT * FROM closeout');
 	$rCloseout = mysql_fetch_assoc($getCloseout);
-	// set accessory counter to zero
+	// set closeout item counter to zero
 	$i = 0;
-	// perform check on each found feature
+	// perform check on each found closeout item 
 	while( $rCloseout = mysql_fetch_assoc( $getCloseout ) ) {
 		$i++;
 		if($rCloseout['sold'] == 1 || $rCloseout['visible'] == 0) {
 			continue;
 		}
-		// echo out each feature as a list item
+		// echo out each closeout item as a list item
 		echo "<hr>";
 		echo "<li class='feature' id='feature-" . $i . "'>";
 		echo "<h2 class='closeout-header'>" . $rCloseout['description'] . "</h2>";
@@ -1372,8 +1334,10 @@ function closeout() {
 			$items = explode( ',', $rCloseout['item_num'] );
 			$len = count($items);
 			array_walk($items, 'trim_value');
+			//set directory / pdf / image selector as first item number and "-combo"
 			$comboName = $items[0] . '-combo';
-			echo "<h2 class='closeout-header'>Item Numbers "; 
+			echo "<h2 class='closeout-header'>Item Numbers ";
+			//if two item nums, set title, otherwise set to use any number more than two 
 			if($len == 2 ) {
 				echo $items[0] . ' and ' . $items[1]; 
 			} else {
@@ -1422,15 +1386,13 @@ function closeout() {
 	}
 }
 
-
-
 /**
  *
  * Generate a gallery of thumbnails for the provided product
  *
  * @param string $source   : determines if its a product or package. default: product [product | package]
  * @param string $selector : select gallery images for the selected product
- * @param number $limit    : limit the number of images to be shown - default = 9
+ * @param number $limit    : limit the number of images to be shown - default = 15
  * @return                 : products thumbnail gallery
  *
  */
@@ -1513,9 +1475,7 @@ function galleryThumbs( $source = 'product', $selector, $limit = 15 ) {
 			$addHash = mysql_query("INSERT INTO thumbnail_compare (thumbhash, selector, imgname) VALUES ('$currentHash','$selector','$matchedImageName')");
 		}
 		if($i <= $limit){
-			echo "<a ";
-			if($i == 1) {echo "id='thumbAnchor' ";}
-			echo "class='side-gallery-img dv-3'>";
+			echo "<a class='side-gallery-img dv-3'>";
 				echo "<div class='image animate'>";
 					echo "<img alt='" . $product['meta_keywords'] . ' ' . $i . "' title='" . $product['meta_keywords'] . ' ' . $i . "' class='animate lb magnific";
 					if( SET_LAZY_LOAD == 'true' ) {
@@ -1540,7 +1500,8 @@ function galleryThumbs( $source = 'product', $selector, $limit = 15 ) {
  *
  * Generate thumbnails for closeout
  *
- *@param string $itemNum : the directory name passed from the closeout function
+ *@param string $id : the id from database table 'closeout'
+ *@param string $comboName : if the closeout item is a combo, this created selector based off the first item name and '-combo'
  */
 
 function closeoutThumbs($id,$comboName) {
@@ -1549,52 +1510,43 @@ function closeoutThumbs($id,$comboName) {
 	$rCloseout = mysql_fetch_assoc($getCloseout);
 	// set the path for the products gallery
 	// check if the path exists
-	//while() {
 	if($rCloseout['combo'] == 1) {
 		$path = '../_assets/_images/_closeout/' . $comboName . '/JPEG/';
 	} else {
 		$path = '../_assets/_images/_closeout/' . $rCloseout['item_num'] . '/JPEG/';
 	}
-		//echo $path . '<br />';
-		//echo 'itemNum is: ' . $itemNum . '<br />';
-		$i = 0;
-		$dir = opendir($path);
-		$list = array();
-		while($file = readdir($dir)){
-
-			if($file != "." and $file != ".." and $file != "Thumbs.db" and $file != "	_thumbnails"){
-			//echo 'current file is: ' . $file . '<br />';	
-				$ctime = filectime($data_path . $file) . "," . $file;	
-				$list[$ctime] = $file;	
-			}
+	$i = 0;
+	$dir = opendir($path);
+	$list = array();
+	while($file = readdir($dir)){
+		if($file != "." and $file != ".." and $file != "Thumbs.db" and $file != "	_thumbnails"){	
+			$ctime = filectime($data_path . $file) . "," . $file;	
+			$list[$ctime] = $file;	
 		}
-		closedir($dir);
-		natsort($list);
-		//print_r($list);
-		foreach($list as $image){
-			$i++;
-			//echo 'current image is: ' . $image . '<br />';	
-			echo "<a class='";
-			if($i == 1) {
-				echo "first ";
-			}
-			echo "side-gallery-img dv-3'>";
-				echo "<div class='image animate'>";
-					echo "<img alt='Closeout Gallery " . $i . "' title='Closeout Gallery " . $i . "' class='animate lb magnific";
-					if( SET_LAZY_LOAD == 'true' ) {
-						echo " lazy";
-					}
-					if($rCloseout['combo'] == 1) {
-						echo "' data-group='" . $comboName . "' data-id='" . $i . "' data-source='./serve.php?source=" . DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . "&amp;image=".$image."&amp;thumb=1' data-mfp-src='". DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . $image."' itemprop='image' src='" . DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . $image ."' />";
-					} else {
-						echo "' data-group='" . $rCloseout['item_num'] . "' data-id='" . $i . "' data-source='./serve.php?source=" . DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . "&amp;image=".$image."&amp;thumb=1' data-mfp-src='". DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . $image."' itemprop='image' src='" . DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . $image ."' />";
-					}
-				echo "</div>";
-			echo "</a>";
+	}
+	closedir($dir);
+	natsort($list);
+	foreach($list as $image){
+		$i++;	
+		echo "<a class='";
+		if($i == 1) {
+			echo "first ";
 		}
-	//}
+		echo "side-gallery-img dv-3'>";
+		echo "<div class='image animate'>";
+		echo "<img alt='Closeout Gallery " . $i . "' title='Closeout Gallery " . $i . "' class='animate lb magnific";
+		if( SET_LAZY_LOAD == 'true' ) {
+			echo " lazy";
+		}
+		if($rCloseout['combo'] == 1) {
+			echo "' data-group='" . $comboName . "' data-id='" . $i . "' data-source='./serve.php?source=" . DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . "&amp;image=".$image."&amp;thumb=1' data-mfp-src='". DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . $image."' itemprop='image' src='" . DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . $image ."' />";
+		} else {
+			echo "' data-group='" . $rCloseout['item_num'] . "' data-id='" . $i . "' data-source='./serve.php?source=" . DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . "&amp;image=".$image."&amp;thumb=1' data-mfp-src='". DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . $image."' itemprop='image' src='" . DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . $image ."' />";
+		}
+	echo "</div>";
+	echo "</a>";
+	}
 }
-
 
 /**
  *
@@ -1602,7 +1554,7 @@ function closeoutThumbs($id,$comboName) {
  *
  * @param string $source   : determines if its a product or package. default: product [product | package]
  * @param string $selector : select gallery images for the selected product
- * @param number $limit    : limit the number of images to be shown - default = 9
+ * @param number $limit    : limit the number of images to be shown - default = 3
  * @return                 : products thumbnail gallery
  *
  */
@@ -1620,13 +1572,13 @@ function galleryImageThumbs( $source = 'product', $selector, $limit = 3 ) {
 		$parent = mysql_fetch_assoc( $getParent );
 		// set the path for the products gallery
 		if($product['is_base'] == 1) {
-		$path = './_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/';
-		$convPath2 = '/_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/';
-		$thumbPath = '/_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/_thumbnails/';
+			$path = './_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/';
+			$convPath2 = '/_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/';
+			$thumbPath = '/_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/_thumbnails/';
 		} else {
-		$path = './_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/';
-		$convPath2 = '/_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/';
-		$thumbPath = '/_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/_thumbnails/';
+			$path = './_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/';
+			$convPath2 = '/_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/';
+			$thumbPath = '/_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/_thumbnails/';
 		}
 		// check if the path exists
 		$i = 0;
@@ -1646,7 +1598,7 @@ function galleryImageThumbs( $source = 'product', $selector, $limit = 3 ) {
 			//create directory if it doesn't exist
 			if (!file_exists($dirCheck)) {
     			mkdir($dirCheck, 0755, true);
-				}
+			}
 			//get sha1 hash of image
 			$currentHash = (sha1_file($path . $image));
 			//separate parts of image name
@@ -1661,14 +1613,14 @@ function galleryImageThumbs( $source = 'product', $selector, $limit = 3 ) {
 		 		//matched with hash, do nothing
 		 	} else {
 		 		//convert image to thumbnails
-				exec($smallThumb);
-				exec($medThumb);
-				$addHash = mysql_query("INSERT INTO thumbnail_compare (thumbhash, selector, imgname) VALUES ('$currentHash','$selector','$matchedImageName')");
+			exec($smallThumb);
+			exec($medThumb);
+			$addHash = mysql_query("INSERT INTO thumbnail_compare (thumbhash, selector, imgname) VALUES ('$currentHash','$selector','$matchedImageName')");
 			}
 			if($i <= $limit){
 				echo "<a class='side-gallery-img dv-3'>";
-					echo "<div class='image animate'>";
-						echo "<img alt='" . $product['meta_keywords'] . ' ' . $i . "' title='" . $product['meta_keywords'] . ' ' . $i . "' class='animate lb magnific";
+				echo "<div class='image animate'>";
+				echo "<img alt='" . $product['meta_keywords'] . ' ' . $i . "' title='" . $product['meta_keywords'] . ' ' . $i . "' class='animate lb magnific";
 				if( SET_LAZY_LOAD == 'true' ) {
 					echo " lazy";
 				}
@@ -1682,30 +1634,21 @@ function galleryImageThumbs( $source = 'product', $selector, $limit = 3 ) {
 		if($i > $limit && $i > 0 || $rHasGalVideo !== false && mysql_num_rows($rHasGalVideo) > 0){
 			echo "<div class='view-gallery-link'><a target='_blank' class='animate' href='".DIR_ROOT."gallery/".$selector."'>View Gallery</a></div>";
 		}
-		if(empty($list)){
-			// echo "<span class='categories'><p>There are no gallery images at this time.</p></span>";
-		}
+		if(empty($list)){ }
 	}
+	//use this function to check whether gallery button on item slider should be displayed
 	if( $source == 'link' ) {
-		echo 'product selector is: ' . $selector . '<br />';
 		// select the product from the database
 		$getProduct = mysql_query( "SELECT * FROM product_categories_items WHERE selector = '" . $selector . "'" );
 		$product = mysql_fetch_assoc( $getProduct );
-		//check if it has an associated gallery video
-		$hasGalVideo = mysql_query( "SELECT * FROM product_videos WHERE selector = '" . $selector . "'" );
-		$rHasGalVideo = mysql_fetch_assoc($hasGalVideo);
 		// get the products parent information
 		$getParent = mysql_query( "SELECT * FROM product_categories_sub WHERE selector = '" . $product['parent'] . "'" );
 		$parent = mysql_fetch_assoc( $getParent );
 		// set the path for the products gallery
 		if($product['is_base'] == 1) {
 			$path = './_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/';
-			$convPath2 = '/_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/';
-			$thumbPath = '/_assets/_images/_products/' . $product['parent'] . '/' . $selector . '/_gallery/_thumbnails/';
 		} else {
 			$path = './_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/';
-			$convPath2 = '/_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/';
-			$thumbPath = '/_assets/_images/_products/' . $parent['parent'] . '/' . $product['parent'] . '/' . $selector . '/_gallery/_thumbnails/';
 		}
 		// check if the path exists
 		$i = 0;
@@ -1875,8 +1818,8 @@ function makeThumbs( $selector) {
  * Generate thumbnail files and directories for a static path
  *
  * 
- * @param string $selector : generate thumbnails for gallery images linked to this selector
- * @return                 : _thumbnails dir inside gallery dir
+ * @param string $path : portion of path, example: /_assets/_images/_products/ $path /_gallery/
+ * @return : list of generated thumbnails
  *
  */
 

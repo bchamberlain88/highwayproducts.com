@@ -232,10 +232,5 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 <?php // include the global header
-if($_GET['view'] == 'list'){
-    include_once('header.backup.php');
-}elseif($_GET['view'] == 'thumbs'){
-    include_once('header.thumbs.backup.php');
-}else{
     include_once('header.inc.php');
-} ?>
+?>
