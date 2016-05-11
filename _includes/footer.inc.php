@@ -37,7 +37,7 @@ include( 'footer_mobile_menu.php' ); ?>
                     <a class="animate" href="mailto:<?php echo META_CONTACT; ?>">sales@highwayproducts.com</a>
                 </li>
                 <li>
-                    <span class='fa fa-phone'></span>1-877-690-4679
+                    <span class='fa fa-phone'></span><?php echo PHONE_NUMBER ?>
                 </li>
                 <li>&nbsp;</li>
                 <li>

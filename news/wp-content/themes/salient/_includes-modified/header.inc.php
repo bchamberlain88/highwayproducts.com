@@ -150,8 +150,8 @@ __lc.group = 3;
 </header>
 <!-- end global site header and navigation -->
 <aside class='mobile-nav'>
-    <a class='m_number' href='tel:18776904679'>
-        <span class='fa fa-phone'></span>1-877-690-4679
+    <a class='m_number' href='<?php echo PHONE_NUMBER_LINK ?>'>
+        <span class='fa fa-phone'></span><?php echo PHONE_NUMBER ?>
     </a>
     <div class='m_quote'>
         <span class='fa fa-paper-plane'></span>Get a free quote

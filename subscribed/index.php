@@ -58,7 +58,7 @@ include_once('../_includes/quote.php'); ?>
                     </a>
                 </li>
             </ul>
-        <p>Oops! It looks like you're already subscribed. Please call us at 1-877-690-4679 or send us an email at <a href="mailto:sales@highwayproducts.com">sales@highwayproducts.com</a> for assistance.</p>
+        <p>Oops! It looks like you're already subscribed. Please call us at <?php echo PHONE_NUMBER ?> or send us an email at <a href="mailto:sales@highwayproducts.com">sales@highwayproducts.com</a> for assistance.</p>
         </div>
     </div>
 

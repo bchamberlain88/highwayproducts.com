@@ -216,8 +216,8 @@ function titleExists($product_selector) {
  		case $_SERVER['SERVER_NAME'] . '/contact/':
  			return 'Contact Us | Highway Products, Inc';
  			break;
- 		case $_SERVER['SERVER_NAME'] . '/closeout/':
- 			return 'Closeout Section | Highway Products, Inc';
+ 		case $_SERVER['SERVER_NAME'] . '/clearance/':
+ 			return 'Clearance Section | Highway Products, Inc';
  			break;
  		case $_SERVER['SERVER_NAME'] . '/careers/':
  			return 'Careers | Highway Products, Inc';
@@ -293,8 +293,8 @@ function descExists($product_selector) {
  		case $_SERVER['SERVER_NAME'] . '/warranty/':
  			return 'Highway Products Inc. makes warranties and refunds easy! Our warranty covers everything from defects in workmanship, to lost keys!';
  			break;
- 		case $_SERVER['SERVER_NAME'] . '/closeout/':
- 			return 'Here you can view a list of our reduced-price closeout items';
+ 		case $_SERVER['SERVER_NAME'] . '/clearance/':
+ 			return 'Here you can view a list of our reduced-price clearance items';
  			break;
  		case $_SERVER['SERVER_NAME'] . '/careers/':
  			return 'Join our team!';
@@ -1305,38 +1305,38 @@ function trim_value(&$value)
 
 /**
  *
- * Create a list of closeout products
+ * Create a list of clearance products
  * 
  */
 
-function closeout() {
-	$getCloseout = mysql_query('SELECT * FROM closeout');
-	$rCloseout = mysql_fetch_assoc($getCloseout);
-	// set closeout item counter to zero
+function clearance() {
+	$getClearance = mysql_query('SELECT * FROM clearance');
+	$rClearance = mysql_fetch_assoc($getClearance);
+	// set clearance item counter to zero
 	$i = 0;
-	// perform check on each found closeout item 
-	while( $rCloseout = mysql_fetch_assoc( $getCloseout ) ) {
+	// perform check on each found clearance item 
+	while( $rClearance = mysql_fetch_assoc( $getClearance ) ) {
 		$i++;
-		if($rCloseout['sold'] == 1 || $rCloseout['visible'] == 0) {
+		if($rClearance['sold'] == 1 || $rClearance['visible'] == 0) {
 			continue;
 		}
-		// echo out each closeout item as a list item
+		// echo out each clearance item as a list item
 		echo "<hr>";
 		echo "<li class='feature' id='feature-" . $i . "'>";
-		echo "<h2 class='closeout-header'>" . $rCloseout['description'] . "</h2>";
-		if(empty($rCloseout['dimensions'])){
+		echo "<h2 class='clearance-header'>" . $rClearance['description'] . "</h2>";
+		if(empty($rClearance['dimensions'])){
 
 		} else {
-			echo "<h2 class='closeout-header'>Dimensions: " . $rCloseout['dimensions'] . "</h2>";
+			echo "<h2 class='clearance-header'>Dimensions: " . $rClearance['dimensions'] . "</h2>";
 		}
-		if($rCloseout['combo'] == 1) {
+		if($rClearance['combo'] == 1) {
 			// explode the item num into an array
-			$items = explode( ',', $rCloseout['item_num'] );
+			$items = explode( ',', $rClearance['item_num'] );
 			$len = count($items);
 			array_walk($items, 'trim_value');
 			//set directory / pdf / image selector as first item number and "-combo"
 			$comboName = $items[0] . '-combo';
-			echo "<h2 class='closeout-header'>Item Numbers ";
+			echo "<h2 class='clearance-header'>Item Numbers ";
 			//if two item nums, set title, otherwise set to use any number more than two 
 			if($len == 2 ) {
 				echo $items[0] . ' and ' . $items[1]; 
@@ -1352,34 +1352,34 @@ function closeout() {
 				}
 			}
 			echo "</h2>";
-			echo "<p class='accessory-desc closeout-desc'><a class='pdf-link' target='_blank' href=". DIR_IMAGES . '_closeout' . '/' . $comboName . '/' . $comboName .'.pdf' . ">View PDF</a></p>" . '<br />';
+			echo "<p class='accessory-desc clearance-desc'><a class='pdf-link' target='_blank' href=". DIR_IMAGES . '_clearance' . '/' . $comboName . '/' . $comboName .'.pdf' . ">View PDF</a></p>" . '<br />';
 		} else {
-		echo "<h2 class='closeout-header'>Item No. " . $rCloseout['item_num'] . "</h2>";
-		echo "<p class='accessory-desc closeout-desc'><a class='pdf-link' target='_blank' href=". DIR_IMAGES . '_closeout' . '/' . $rCloseout['item_num'] . '/' . $rCloseout['item_num'] .'.pdf' . ">View PDF</a></p>" . '<br />';
+		echo "<h2 class='clearance-header'>Item No. " . $rClearance['item_num'] . "</h2>";
+		echo "<p class='accessory-desc clearance-desc'><a class='pdf-link' target='_blank' href=". DIR_IMAGES . '_clearance' . '/' . $rClearance['item_num'] . '/' . $rClearance['item_num'] .'.pdf' . ">View PDF</a></p>" . '<br />';
 		}
-		echo "<h2 class='closeout-header'>";
-		if ($rCloseout['msrp'] == 0.00) { 
-		} else { echo "MSRP: <span class='msrp'>$" . $rCloseout['msrp'] . "</span>";
+		echo "<h2 class='clearance-header'>";
+		if ($rClearance['msrp'] == 0.00) { 
+		} else { echo "MSRP: <span class='msrp'>$" . $rClearance['msrp'] . "</span>";
 		}
-		echo " Price: $" . $rCloseout['price'] . "</h2>"; 
-		echo "<div class='media-container closeout-blueprint ft small animate'>";
+		echo " Price: $" . $rClearance['price'] . "</h2>"; 
+		echo "<div class='media-container clearance-blueprint ft small animate'>";
 		echo "<a class='image-container animate'>";
-		echo "<img alt='Closeout " . $i . "' title='Closeout " . $i . "' class='animate lb mag-feature closeout";
+		echo "<img alt='Clearance " . $i . "' title='Clearance " . $i . "' class='animate lb mag-feature clearance";
 		if( SET_LAZY_LOAD == 'true' ) {
 			echo " lazy";
 		}
-		if($rCloseout['combo'] == 1) {
-			echo "'d ata-source='serve.php?source=".DIR_IMAGES. '_closeout/' . $comboName . "/&amp;image=" . $comboName . '.jpg' . "&amp;thumb=1' data-mfp-src='" . DIR_IMAGES . '_closeout' . '/' . $comboName . '/' . $comboName .'.jpg' . "' src='". DIR_IMAGES . '_closeout' . '/' . $comboName . '/' . $comboName . '.jpg' ."' />";
+		if($rClearance['combo'] == 1) {
+			echo "'d ata-source='serve.php?source=".DIR_IMAGES. '_clearance/' . $comboName . "/&amp;image=" . $comboName . '.jpg' . "&amp;thumb=1' data-mfp-src='" . DIR_IMAGES . '_clearance' . '/' . $comboName . '/' . $comboName .'.jpg' . "' src='". DIR_IMAGES . '_clearance' . '/' . $comboName . '/' . $comboName . '.jpg' ."' />";
 		} else {
-			echo "' data-source='serve.php?source=".DIR_IMAGES. '_closeout' . $rCloseout['item_num'] . "/&amp;image=" . $rCloseout['item_num'] . '.jpg' . "&amp;thumb=1' data-mfp-src='" . DIR_IMAGES . '_closeout' . '/' . $rCloseout['item_num'] . '/' . $rCloseout['item_num'] .'.jpg' . "' src='". DIR_IMAGES . '_closeout' . '/' . $rCloseout['item_num'] . '/' . $rCloseout['item_num'] . '.jpg' ."' />";
+			echo "' data-source='serve.php?source=".DIR_IMAGES. '_clearance' . $rClearance['item_num'] . "/&amp;image=" . $rClearance['item_num'] . '.jpg' . "&amp;thumb=1' data-mfp-src='" . DIR_IMAGES . '_clearance' . '/' . $rClearance['item_num'] . '/' . $rClearance['item_num'] .'.jpg' . "' src='". DIR_IMAGES . '_clearance' . '/' . $rClearance['item_num'] . '/' . $rClearance['item_num'] . '.jpg' ."' />";
 		}
 		echo "</a>";
 		echo "</div>";
-		echo "<div class='feature-info accessory closeout'>";
-		if($rCloseout['combo'] == 1) {
-			closeoutThumbs($rCloseout['id'],$comboName);
+		echo "<div class='feature-info accessory clearance'>";
+		if($rClearance['combo'] == 1) {
+			clearanceThumbs($rClearance['id'],$comboName);
 		} else {
-			closeoutThumbs($rCloseout['id']);
+			clearanceThumbs($rClearance['id']);
 		}
 		echo "</div>";
 		echo "</li>";	
@@ -1498,22 +1498,22 @@ function galleryThumbs( $source = 'product', $selector, $limit = 15 ) {
 
 /**
  *
- * Generate thumbnails for closeout
+ * Generate thumbnails for clearance
  *
- *@param string $id : the id from database table 'closeout'
- *@param string $comboName : if the closeout item is a combo, this created selector based off the first item name and '-combo'
+ *@param string $id : the id from database table 'clearance'
+ *@param string $comboName : if the clearance item is a combo, this created selector based off the first item name and '-combo'
  */
 
-function closeoutThumbs($id,$comboName) {
+function clearanceThumbs($id,$comboName) {
 	// select the product from the database
-	$getCloseout = mysql_query( "SELECT * FROM closeout where id = '" . $id . "'" );
-	$rCloseout = mysql_fetch_assoc($getCloseout);
+	$getClearance = mysql_query( "SELECT * FROM clearance where id = '" . $id . "'" );
+	$rClearance = mysql_fetch_assoc($getClearance);
 	// set the path for the products gallery
 	// check if the path exists
-	if($rCloseout['combo'] == 1) {
-		$path = '../_assets/_images/_closeout/' . $comboName . '/JPEG/';
+	if($rClearance['combo'] == 1) {
+		$path = '../_assets/_images/_clearance/' . $comboName . '/JPEG/';
 	} else {
-		$path = '../_assets/_images/_closeout/' . $rCloseout['item_num'] . '/JPEG/';
+		$path = '../_assets/_images/_clearance/' . $rClearance['item_num'] . '/JPEG/';
 	}
 	$i = 0;
 	$dir = opendir($path);
@@ -1534,14 +1534,14 @@ function closeoutThumbs($id,$comboName) {
 		}
 		echo "side-gallery-img dv-3'>";
 		echo "<div class='image animate'>";
-		echo "<img alt='Closeout Gallery " . $i . "' title='Closeout Gallery " . $i . "' class='animate lb magnific";
+		echo "<img alt='Clearance Gallery " . $i . "' title='Clearance Gallery " . $i . "' class='animate lb magnific";
 		if( SET_LAZY_LOAD == 'true' ) {
 			echo " lazy";
 		}
-		if($rCloseout['combo'] == 1) {
-			echo "' data-group='" . $comboName . "' data-id='" . $i . "' data-source='./serve.php?source=" . DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . "&amp;image=".$image."&amp;thumb=1' data-mfp-src='". DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . $image."' itemprop='image' src='" . DIR_IMAGES . '_closeout/' . $comboName . '/JPEG/' . $image ."' />";
+		if($rClearance['combo'] == 1) {
+			echo "' data-group='" . $comboName . "' data-id='" . $i . "' data-source='./serve.php?source=" . DIR_IMAGES . '_clearance/' . $comboName . '/JPEG/' . "&amp;image=".$image."&amp;thumb=1' data-mfp-src='". DIR_IMAGES . '_clearance/' . $comboName . '/JPEG/' . $image."' itemprop='image' src='" . DIR_IMAGES . '_clearance/' . $comboName . '/JPEG/' . $image ."' />";
 		} else {
-			echo "' data-group='" . $rCloseout['item_num'] . "' data-id='" . $i . "' data-source='./serve.php?source=" . DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . "&amp;image=".$image."&amp;thumb=1' data-mfp-src='". DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . $image."' itemprop='image' src='" . DIR_IMAGES . '_closeout/' . $rCloseout['item_num'] . '/JPEG/' . $image ."' />";
+			echo "' data-group='" . $rClearance['item_num'] . "' data-id='" . $i . "' data-source='./serve.php?source=" . DIR_IMAGES . '_clearance/' . $rClearance['item_num'] . '/JPEG/' . "&amp;image=".$image."&amp;thumb=1' data-mfp-src='". DIR_IMAGES . '_clearance/' . $rClearance['item_num'] . '/JPEG/' . $image."' itemprop='image' src='" . DIR_IMAGES . '_clearance/' . $rClearance['item_num'] . '/JPEG/' . $image ."' />";
 		}
 	echo "</div>";
 	echo "</a>";

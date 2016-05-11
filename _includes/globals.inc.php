@@ -101,6 +101,9 @@ define( 'META_BASE', 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
 define( 'META_AUTHOR', 'Sebastian Inman @sebastian_inman, inherited by Barrett Chamberlain' );
 // plaintext email address for easy contact of the owner of the website - recommended but not necessary
 define( 'META_CONTACT', $setting['site_default_email'] );
+//the phone number listed on the website
+define( 'PHONE_NUMBER', '1-877-690-4679 (Toll Free)');
+define( 'PHONE_NUMBER_LINK', 'tel:+18776904679');
 // automatically updating copyright information for the website and media
 define( 'META_COPYRIGHT', 'Copyright &copy; ' . date( 'Y' ) );
 // sets the description and overall feel of the website for search engines - seo purposes

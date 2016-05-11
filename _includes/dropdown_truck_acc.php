@@ -35,10 +35,10 @@
                     </div>
                   </a>
                 <?php } if($i == 12 ){ ?>
-                    <a class='items-block item one-fourth' href='<?php echo DIR_ROOT; ?>closeout'>
+                    <a class='items-block item one-fourth' href='<?php echo DIR_ROOT; ?>clearance'>
                     <div class='item-block-content'>
-                        <img class='item-block-thumb' alt='Closeout Section' title='Closeout Section' src='<?php echo DIR_IMAGES ?>_header/closeout.jpg' />
-                        <span>Closeout Section</span>
+                        <img class='item-block-thumb' alt='Clearance Section' title='Clearance Section' src='<?php echo DIR_IMAGES ?>_header/clearance.jpg' />
+                        <span>Clearance Section</span>
                     </div>
                   </a>
                 <?php continue; } 

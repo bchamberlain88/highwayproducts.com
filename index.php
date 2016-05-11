@@ -444,7 +444,7 @@ if( SET_SHARING == 'true' ) { ?>
 <gcse:searchbox-only></gcse:searchbox-only>
 </div>
 
-            <a class='home-phone' href='tel:+1-877-690-4679'><span class='fa fa-phone'></span>1-877-690-4679</a>
+            <a class='home-phone' href='<?php echo PHONE_NUMBER_LINK ?>'><span class='fa fa-phone'></span><?php echo PHONE_NUMBER ?></a>
 
             <h1><span class='hide four_eighty'>Welcome to </span>Highway Products Inc.</h1>
             <p class='intro-copy'>Highway Products Inc. is proudly one of the world's premier manufacturers of aluminum truck tool boxes, service truck bodies,
@@ -505,7 +505,7 @@ if( SET_SHARING == 'true' ) { ?>
             <?php } ?>
 
             <h2>Call us today!</h2>
-            <h1>1-877-690-4679</h1>
+            <h1><?php echo PHONE_NUMBER ?></h1>
 
             <div class='side-sep smaller'></div>
 
