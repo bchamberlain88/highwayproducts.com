@@ -209,7 +209,7 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
                             if( SET_LAZY_LOAD == 'true' ) {
                                 echo " lazy";
                             }
-                            echo "' data-group='" . $product_selector . "' data-id='" . $i . "' data-source='../serve.php?source=".$image_dir."&amp;image=".$image."&amp;thumb=1' itemprop='image' data-mfp-src='".$path.$image."' src='" . $path . '_thumbnails/' . $path_parts['filename'] . '_med' . '.' . $path_parts['extension'] ."' />";
+                            echo "' data-group='" . $product_selector . "' data-id='" . $i . "' data-source='../serve.php?source=".$image_dir."&amp;image=".$image."&amp;thumb=1' itemprop='image' data-mfp-src='".$path.$image."' src='" . $path . '_thumbnails/' . $path_parts['filename'] . '_med' . '.' . $path_parts['extension'] . '?' . filemtime($path . '_thumbnails/' . $path_parts['filename'] . '_med' . '.' . $path_parts['extension']) . "' />";
                             echo "<div class='galleryLabel'>" . $label . "</div>";
                             echo "</div>";
                             echo "</a>";

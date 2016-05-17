@@ -74,7 +74,7 @@
               echo "<a class='items-block item one-fourth' href='".DIR_ROOT."fuel-tanks'>
                       <div class='item-block-content'>
                           <img class='item-block-thumb' alt='Fuel & Tool Tanks' title='Fuel & Tool Tanks' src='".DIR_IMAGES . '_products/trucks-pickup/fuel-tanks/fuel-tanks_thumb.jpg'."' />
-                          <span>Fuel &amp; Tool Tanks</span>
+                          <span>Fuel Tanks / Fuel &amp; Tool</span>
                       </div>
                     </a>";
             }

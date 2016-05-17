@@ -58,12 +58,20 @@ function filemtime_remote($uri)
  */
 
 function checkForRedirects($host) {
-	if($host == $_SERVER['SERVER_NAME'] . '/order/') {
- 		redirect('contact');
- 	}
- 	if($host == $_SERVER['SERVER_NAME'] . '/testimonials/') {
- 		redirect('reviews');
- 	}
+	switch ($host) {
+		case $_SERVER['SERVER_NAME'] . '/order/':
+			redirect('contact');
+			break;
+		case $_SERVER['SERVER_NAME'] . '/testimonials/':
+			redirect('reviews');
+			break;
+		case $_SERVER['SERVER_NAME'] . '/closeout/':
+			redirect('clearance');
+			break;
+		case $_SERVER['SERVER_NAME'] . '/custom/':
+			redirect('custom-aluminum-fabrication');
+			break;
+	}
 }
 
 
@@ -166,7 +174,9 @@ function titleExists($product_selector) {
  		}
 	$checkPage = mysql_query("SELECT * FROM product_categories_items WHERE selector = '".$product_selector."' and meta_title is not null"); 	
 	$checkSub = mysql_query("SELECT * FROM product_categories_sub WHERE url = '".$product_selector."' and meta_title is not null"); 
-	$checkCat = mysql_query("SELECT * FROM product_categories_main WHERE url = '".$product_selector."' and meta_title is not null"); 
+	$checkCat = mysql_query("SELECT * FROM product_categories_main WHERE url = '".$product_selector."' and meta_title is not null");
+	$checkForDirectory = mysql_query("SELECT * FROM directory_title WHERE request_uri = '".$_SERVER['REQUEST_URI']."'");
+	$rCheckForDirectory = mysql_fetch_assoc($checkForDirectory);
 	if(mysql_num_rows($checkPage) > 0){
 		if(strpos($host,'gallery') !== false) {
  			$rCheckPage = mysql_fetch_assoc( $checkPage );
@@ -200,28 +210,8 @@ function titleExists($product_selector) {
  			return $rCheckCat['meta_title'];
  		}
  	}
- 	switch($host) {
- 		case $_SERVER['SERVER_NAME'] . '/about/':
- 			return 'About Us | Highway Products, Inc';
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/reviews/':
- 			return 'Reviews | Highway Products, Inc';
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/order/':
- 			return 'How to Buy | Highway Products, Inc';
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/warranty/':
- 			return 'Warranty | Highway Products, Inc';
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/contact/':
- 			return 'Contact Us | Highway Products, Inc';
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/clearance/':
- 			return 'Clearance Section | Highway Products, Inc';
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/careers/':
- 			return 'Careers | Highway Products, Inc';
- 			break;
+ 	if(!empty($rCheckForDirectory)) {
+ 		return $rCheckForDirectory['title'];
  	}
 }
 
@@ -244,6 +234,8 @@ function descExists($product_selector) {
 	$checkPage = mysql_query("SELECT * FROM product_categories_items WHERE selector = '".$product_selector."' and meta_title is not null"); 	
 	$checkSub = mysql_query("SELECT * FROM product_categories_sub WHERE url = '".$product_selector."' and meta_title is not null"); 
 	$checkCat = mysql_query("SELECT * FROM product_categories_main WHERE url = '".$product_selector."' and meta_title is not null"); 
+	$checkForDirectory = mysql_query("SELECT * FROM directory_desc WHERE request_uri = '".$_SERVER['REQUEST_URI']."'");
+  $rCheckForDirectory = mysql_fetch_assoc($checkForDirectory);
 	if(mysql_num_rows($checkPage) > 0){
 		if(strpos($host,'gallery') !== false) {
  			$rCheckPage = mysql_fetch_assoc( $checkPage );
@@ -277,29 +269,9 @@ function descExists($product_selector) {
  			return $rCheckCat['meta_description'];
  		}
  	}
- 	switch($host) {
- 		case $_SERVER['SERVER_NAME'] . '/about/':
- 			return 'Our diverse product lines include standard and custom lines of semi as well as pickup truck boxes, cab protectors, guards, truck flatbeds, RV tow bodies, ramps, cargo slides, and service bodies as well. We are the leader and very well known for our custom capability.';
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/contact/':
- 			return "Do you have any questions or comments about our products or services? Don't hold back! Our sales team is happy to help with any concerns you may have. Just fill out the form below and press the submit button to send your message off to us, and we will respond to your message as soon as we can!";
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/order/':
- 			return 'Placing a custom order is as easy as filling out an online form, and sending it to one of our sales representatives!';
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/reviews/':
- 			return 'Here at Highway Products Inc. we do out best to make our customers happy! Here is what some of those customers have to say.';
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/warranty/':
- 			return 'Highway Products Inc. makes warranties and refunds easy! Our warranty covers everything from defects in workmanship, to lost keys!';
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/clearance/':
- 			return 'Here you can view a list of our reduced-price clearance items';
- 			break;
- 		case $_SERVER['SERVER_NAME'] . '/careers/':
- 			return 'Join our team!';
- 			break;
- 	}
+ 	if(!empty($rCheckForDirectory)) {
+    	return $rCheckForDirectory['desc'];
+  	}
 }
 
 /**
@@ -1624,7 +1596,7 @@ function galleryImageThumbs( $source = 'product', $selector, $limit = 3 ) {
 				if( SET_LAZY_LOAD == 'true' ) {
 					echo " lazy";
 				}
-				echo "' data-group='" . $selector . "' data-id='" . $i . "' data-source='./serve.php?source=".$path."&amp;image=".$image."&amp;thumb=1' data-mfp-src='".$path.$image."' itemprop='image' src='" . $path . '_thumbnails/' . $path_parts['filename'] . '_med' . '.' . $path_parts['extension'] ."' />";
+				echo "' data-group='" . $selector . "' data-id='" . $i . "' data-source='./serve.php?source=".$path."&amp;image=".$image."&amp;thumb=1' data-mfp-src='".$path.$image."' itemprop='image' src='" . $path . '_thumbnails/' . $path_parts['filename'] . '_med' . '.' . $path_parts['extension'] . '?' . filemtime($path . '_thumbnails/' . $path_parts['filename'] . '_med' . '.' . $path_parts['extension']) . "' />";
 				echo "</div>";
 				echo "</a>";
 			} else { 

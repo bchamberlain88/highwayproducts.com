@@ -79,6 +79,8 @@ define( 'DIR_INCLUDES', DIR_ROOT . '_includes/' );
 define( 'DIR_ASSETS', DIR_ROOT . '_assets/' );
 // root directory for all image files
 define( 'DIR_IMAGES', DIR_ASSETS . '_images/' );
+// root directory for all pdfs
+define( 'DIR_PDFS', DIR_ASSETS . '_pdfs/' );
 // root directory for all stlyesheets required by website
 define( 'DIR_STYLES', DIR_ASSETS . '_styles/' );
 // root directory for all javascript files required by website
@@ -102,7 +104,7 @@ define( 'META_AUTHOR', 'Sebastian Inman @sebastian_inman, inherited by Barrett C
 // plaintext email address for easy contact of the owner of the website - recommended but not necessary
 define( 'META_CONTACT', $setting['site_default_email'] );
 //the phone number listed on the website
-define( 'PHONE_NUMBER', '1-877-690-4679 (Toll Free)');
+define( 'PHONE_NUMBER', '1-877-690-4679 (Toll free)');
 define( 'PHONE_NUMBER_LINK', 'tel:+18776904679');
 // automatically updating copyright information for the website and media
 define( 'META_COPYRIGHT', 'Copyright &copy; ' . date( 'Y' ) );
@@ -129,7 +131,6 @@ define( 'FACEBOOK_TITLE', $meta_title );
 define( 'FACEBOOK_DESCRIPTION', $meta_description );
 // the default image for the website when sharing on Facebook
 define( 'FACEBOOK_IMAGE', '' );
-
 // the type of card to create when sharing on Twitter
 define( 'TWITTER_CARD', 'summary' );
 // title of the website for sharing on Twitter

@@ -1,0 +1,4 @@
+[26-Jan-2015 11:04:48 CST6CDT] PHP Parse error:  syntax error, unexpected '[' in /home/highwayp/public_html/new/_includes/meta.inc.php on line 25
+[26-Mar-2015 17:57:12 CST6CDT] PHP Warning:  Unterminated comment starting line 91 in /home/highwayp/public_html/new/_includes/functions.inc.php on line 91
+[26-Mar-2015 17:57:12 CST6CDT] PHP Fatal error:  Call to undefined function pageSlides() in /home/highwayp/public_html/new/about/index.php on line 24
+[11-Nov-2015 13:47:38 CST6CDT] PHP Parse error:  syntax error, unexpected $end in /home/highwayp/public_html/highwayproducts.com/_includes/functions.inc.php on line 95
