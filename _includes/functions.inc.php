@@ -51,27 +51,17 @@ function filemtime_remote($uri)
 
 /**
  *
- * Check for page urls set to be redirected
+ * Check page_redirects database table for directory and use javascript redirect function if matched
  *
- * @param string $host : combination of $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
  *
  */
 
-function checkForRedirects($host) {
-	switch ($host) {
-		case $_SERVER['SERVER_NAME'] . '/order/':
-			redirect('contact');
-			break;
-		case $_SERVER['SERVER_NAME'] . '/testimonials/':
-			redirect('reviews');
-			break;
-		case $_SERVER['SERVER_NAME'] . '/closeout/':
-			redirect('clearance');
-			break;
-		case $_SERVER['SERVER_NAME'] . '/custom/':
-			redirect('custom-aluminum-fabrication');
-			break;
-	}
+function checkForRedirects() {
+	$checkRedirectsTable = mysql_query("SELECT * FROM page_redirects WHERE url_old = '".$_SERVER['REQUEST_URI']."'");
+	$rCheckRedirectsTable = mysql_fetch_assoc($checkRedirectsTable);
+	if(!empty($rCheckRedirectsTable)) {
+ 		redirect($rCheckRedirectsTable['url_new']);
+ 	}
 }
 
 
@@ -1324,29 +1314,43 @@ function clearance() {
 				}
 			}
 			echo "</h2>";
-			echo "<p class='accessory-desc clearance-desc'><a class='pdf-link' target='_blank' href=". DIR_IMAGES . '_clearance' . '/' . $comboName . '/' . $comboName .'.pdf' . ">View PDF</a></p>" . '<br />';
+			echo "<p class='accessory-desc clearance-desc'>";
+			if($rClearance['no_pdf'] == 1) { } else {
+				echo "<a class='pdf-link' target='_blank' href=". DIR_IMAGES . '_clearance' . '/' . $comboName . '/' . $comboName .'.pdf' . ">View PDF</a></p>" . '<br />';
+			}
 		} else {
-		echo "<h2 class='clearance-header'>Item No. " . $rClearance['item_num'] . "</h2>";
-		echo "<p class='accessory-desc clearance-desc'><a class='pdf-link' target='_blank' href=". DIR_IMAGES . '_clearance' . '/' . $rClearance['item_num'] . '/' . $rClearance['item_num'] .'.pdf' . ">View PDF</a></p>" . '<br />';
+			echo "<h2 class='clearance-header'>Item No. " . $rClearance['item_num'] . "</h2>";
+			echo "<p class='accessory-desc clearance-desc'>";
+			if($rClearance['no_pdf'] == 1) { } else {
+				echo "<a class='pdf-link' target='_blank' href=". DIR_PDFS . 'clearance' . '/' . $rClearance['item_num'] . '/' . $rClearance['item_num'] .'.pdf' . ">View PDF</a></p>" . '<br />';
+			}
 		}
 		echo "<h2 class='clearance-header'>";
 		if ($rClearance['msrp'] == 0.00) { 
 		} else { echo "MSRP: <span class='msrp'>$" . $rClearance['msrp'] . "</span>";
 		}
-		echo " Price: $" . $rClearance['price'] . "</h2>"; 
-		echo "<div class='media-container clearance-blueprint ft small animate'>";
-		echo "<a class='image-container animate'>";
-		echo "<img alt='Clearance " . $i . "' title='Clearance " . $i . "' class='animate lb mag-feature clearance";
-		if( SET_LAZY_LOAD == 'true' ) {
-			echo " lazy";
+		echo " Price: $" . $rClearance['price'] . "</h2>";
+		if($rClearance['no_pdf'] == 1) { } else {
+			echo "<div class='media-container clearance-blueprint ft small animate'>";
+			echo "<a class='image-container animate'>";
+			echo "<img alt='Clearance " . $i . "' title='Clearance " . $i . "' class='animate lb mag-feature clearance";
+			if( SET_LAZY_LOAD == 'true' ) {
+				echo " lazy";
+			}
 		}
 		if($rClearance['combo'] == 1) {
-			echo "'d ata-source='serve.php?source=".DIR_IMAGES. '_clearance/' . $comboName . "/&amp;image=" . $comboName . '.jpg' . "&amp;thumb=1' data-mfp-src='" . DIR_IMAGES . '_clearance' . '/' . $comboName . '/' . $comboName .'.jpg' . "' src='". DIR_IMAGES . '_clearance' . '/' . $comboName . '/' . $comboName . '.jpg' ."' />";
+			if($rClearance['no_pdf'] == 1) { } else {
+				echo "'d ata-source='serve.php?source=".DIR_IMAGES. '_clearance/' . $comboName . "/&amp;image=" . $comboName . '.jpg' . "&amp;thumb=1' data-mfp-src='" . DIR_IMAGES . '_clearance' . '/' . $comboName . '/' . $comboName .'.jpg' . "' src='". DIR_IMAGES . '_clearance' . '/' . $comboName . '/' . $comboName . '.jpg' ."' />";
+			}
 		} else {
-			echo "' data-source='serve.php?source=".DIR_IMAGES. '_clearance' . $rClearance['item_num'] . "/&amp;image=" . $rClearance['item_num'] . '.jpg' . "&amp;thumb=1' data-mfp-src='" . DIR_IMAGES . '_clearance' . '/' . $rClearance['item_num'] . '/' . $rClearance['item_num'] .'.jpg' . "' src='". DIR_IMAGES . '_clearance' . '/' . $rClearance['item_num'] . '/' . $rClearance['item_num'] . '.jpg' ."' />";
+			if($rClearance['no_pdf'] == 1) { } else {
+				echo "' data-source='serve.php?source=".DIR_IMAGES. '_clearance' . $rClearance['item_num'] . "/&amp;image=" . $rClearance['item_num'] . '.jpg' . "&amp;thumb=1' data-mfp-src='" . DIR_IMAGES . '_clearance' . '/' . $rClearance['item_num'] . '/' . $rClearance['item_num'] .'.jpg' . "' src='". DIR_IMAGES . '_clearance' . '/' . $rClearance['item_num'] . '/' . $rClearance['item_num'] . '.jpg' ."' />";
+			}
 		}
-		echo "</a>";
-		echo "</div>";
+		if($rClearance['no_pdf'] == 1) { } else {
+			echo "</a>";
+			echo "</div>";
+		}
 		echo "<div class='feature-info accessory clearance'>";
 		if($rClearance['combo'] == 1) {
 			clearanceThumbs($rClearance['id'],$comboName);

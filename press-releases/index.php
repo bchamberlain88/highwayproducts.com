@@ -13,8 +13,6 @@
 include_once('../_includes/meta.inc.php');
 include_once('../_includes/quote.php'); 
 include_once('../_includes/newsletter.php');
-$checkForDirectory = mysql_query("SELECT * FROM directory_title WHERE request_uri = '".$_SERVER['REQUEST_URI']."'");
-$rCheckForDirectory = mysql_fetch_assoc($checkForDirectory);
 ?>
 
 <div class='container'>
@@ -34,7 +32,7 @@ $rCheckForDirectory = mysql_fetch_assoc($checkForDirectory);
             </ul>
 <p>Click on the link or thumbnail to download a PDF of one of our press releases.<br /><br /></p>
 <?php 
-$getPressReleases = mysql_query( "SELECT * FROM press_releases");
+$getPressReleases = mysql_query( "SELECT * FROM press_releases order by release_date desc");
 while ($rGetPressReleases = mysql_fetch_assoc( $getPressReleases )) {
     $pdfLink = DIR_PDFS . "press-releases/" . $rGetPressReleases['filename'] . ".pdf";
     $imgSrc = DIR_IMAGES . "press-releases/" . $rGetPressReleases['filename'] . ".jpg";

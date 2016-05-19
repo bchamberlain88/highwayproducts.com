@@ -18,8 +18,8 @@
 // require global variables
 require_once('globals.inc.php'); 
 $product_selector = $_GET['q'];
-$host = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-checkForRedirects($host);
+//check for redirects which will be done by javascript since headers are already sent
+checkForRedirects();
 if($product_selector){
     pageExists('product', $product_selector);
 } ?>

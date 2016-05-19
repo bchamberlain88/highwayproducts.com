@@ -43,6 +43,9 @@ include( 'footer_mobile_menu.php' ); ?>
                 <li>
                     <a target="_blank" href="<?php echo DIR_ROOT . 'careers';?>">Join our team!</a>
                 </li>
+                <li>
+                    <a href="<?php echo DIR_ROOT . 'press-releases';?>">Press Releases</a>
+                </li>
                 <li>&nbsp;</li>
             </ul>
             <!-- Follow Us Online -->
