@@ -110,6 +110,7 @@ include( 'footer_mobile_menu.php' ); ?>
 </footer>
 <!-- end site footer -->
 </div>
+<?php include_once('privacy.php'); ?>
 <!-- end content container -->
 <!-- import the latest jQuery API -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -142,6 +143,13 @@ window.__lc.license = 3147512;
                 enabled:true
         }
     });
+</script>
+<script>
+
+$('.close-quote').on('click', function(){
+  $('.privacy-wrapper').css('display','none');
+});
+
 </script>
 <!-- End of LiveChat code -->
 </body>
