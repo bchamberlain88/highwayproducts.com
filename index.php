@@ -356,7 +356,8 @@ $product_selector = $_GET['q'];
             </li>
             <li class='callout-feature'>
                 <i class='circle fa fa-check'></i>
-                Transferable Lifetime Warranty
+                <?php 
+                if($product['five_year_warranty'] == 1){ echo 'Five Year Warranty'; } else { echo 'Transferable Lifetime Warranty';} ?>
             </li>
             <li class='callout-feature'>
                 <i class='circle fa fa-check'></i>
@@ -447,10 +448,7 @@ if( SET_SHARING == 'true' ) { ?>
             <a class='home-phone' href='<?php echo PHONE_NUMBER_LINK ?>'><span class='fa fa-phone'></span><?php echo PHONE_NUMBER ?></a>
 
             <h1><span class='hide four_eighty'>Welcome to </span>Highway Products Inc.</h1>
-            <p class='intro-copy'>Highway Products Inc. is proudly one of the world's premier manufacturers of aluminum truck tool boxes, service truck bodies,
-            aluminum flatbeds for pickup trucks and accessories for pickup trucks and semi-trucks. Designs are taken to the leading edge
-            with the highest quality innovative products available. Our products are designed and built in the U.S.A. and exported globally.
-            We will customize anything you can possibly dream up and love taking on a challenge!</p>
+            <p class='intro-copy'>Highway Products Inc. is proudly one of the world's premier manufacturers of aluminum truck tool boxes, service truck bodies, aluminum flatbeds for pickup trucks, and accessories for pickup trucks and semi-trucks. Designs are taken to the leading edge with the highest-quality innovative products available. Our products are designed and built in the U.S.A. and exported globally. We will customize anything you can possibly dream up and love taking on a challenge!</p>
 
             <iframe class='intro-video player youtube' height='0' src='https://www.youtube.com/embed/IIi1WeH3zR8?wmode=transparent' allowfullscreen></iframe>
 

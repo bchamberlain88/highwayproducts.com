@@ -27,7 +27,7 @@ if($product['no_shipping'] == 1) { } else { ?>
         </div>
         <div class='feature-info'>
             <h2>Shipping</h2>
-            <p>Many of our high quality products can be shipped via common carrier truck. We can ship this package to your door or to your favorite up fitter, body shop, or weld shop.</p>
+            <p>Many of our high-quality products can be shipped via common carrier truck. We can ship this package to your door, favorite up-fitter, body shop, or weld shop.</p>
         </div>
     </li>
 <?php } ?>
@@ -39,7 +39,7 @@ if($product['no_shipping'] == 1) { } else { ?>
     </div>
     <div class='feature-info'>
         <h2>Alcoa Aluminum</h2>
-        <p>Highway Products proudly uses premium Alcoa aluminum to build the highest quality American made metal products available.</p>
+        <p>Highway Products proudly uses premium Alcoa aluminum to build the highest-quality American-made metal products available.</p>
     </div>
 </li>
 <?php if($product['five_year_warranty'] == 1) { ?>
@@ -51,8 +51,7 @@ if($product['no_shipping'] == 1) { } else { ?>
         </div>
         <div class='feature-info'>
             <h2>Five Year Warranty</h2>
-            <p>Our semi truck tool boxes come with a five year warranty against defects in workmanship. Your warranty includes locking mechanisms,
-                        hinges, gas props, weather stripping, and any other materials we use.</p>
+            <p>Our semi-truck toolboxes come with a five-year warranty against defects in workmanship. Your warranty includes locking mechanisms, hinges, gas props, weather stripping, and any other materials we use.</p>
         </div>
     </li>
 <?php } else { ?>
@@ -64,7 +63,7 @@ if($product['no_shipping'] == 1) { } else { ?>
         </div>
         <div class='feature-info'>
             <h2>Lifetime Warranty</h2>
-            <p>All of our standard products come with a Lifetime Warranty against defects in workmanship. Your warranty includes locking mechanisms,hinges, gas props, weather stripping, and any other materials we use.</p>
+            <p>All of our standard products come with a Lifetime Warranty against defects in workmanship. Your warranty includes locking mechanisms, hinges, gas props, weatherstripping, and any other materials we use.</p>
         </div>
     </li>
 <?php } ?>

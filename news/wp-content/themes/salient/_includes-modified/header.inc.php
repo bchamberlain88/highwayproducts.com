@@ -41,6 +41,12 @@ if(isset($_GET['quote'])) {
         echo "<div class='message-sent'><i class='fa fa-times close-message'></i>Thank you for contacting us! Your quote request has been received and will be responded to within one business day.</div>";
     }
 ?>
+
+
+<!-- Aweber Lightbox -->
+
+<script type="text/javascript">var hide_awf_Form = true;</script>
+
 <!-- global site header and navigation -->
 
 <script type="text/javascript">

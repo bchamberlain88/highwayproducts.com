@@ -117,8 +117,6 @@
 
     <!-- reset all default browser styles -->
 
-    <link href='<?php echo DIR_STYLES.'reset.min.css'; ?>' rel='stylesheet' type='text/css'>
-
     <!-- import all global page styles
 
     <link href='<?php echo DIR_STYLES.'style.min.css'; ?>' rel='stylesheet' type='text/css'>  -->

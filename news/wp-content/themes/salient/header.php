@@ -15,6 +15,10 @@
 	<meta name="viewport" content="width=1200" />
 <?php } ?>	
 
+<!-- Aweber Lightbox -->
+
+<script type="text/javascript">var hide_awf_Form = true;</script>
+
 <!--Shortcut icon-->
 <?php if(!empty($options['favicon'])) { ?>
 	<link rel="shortcut icon" href="<?php echo nectar_options_img($options['favicon']); ?>" />

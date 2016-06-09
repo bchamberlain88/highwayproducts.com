@@ -4,7 +4,7 @@
     } else { ?>
         <ul class='product-styles'>
             <h1>Color &amp; Style Options</h1><br />
-            <h4>Please click one of the boxes for minformation</h4><br />
+            <h4>Please click one of the boxes for more information</h4><br />
                 <li class='style-option' data-name='Silverback' data-description='Our smooth aluminum finish makes quick work of sliding equipment in and sweeping debris out. Aluminum only requires minimal polishing to keep it looking like brand new.' data-style='silver'>
                     <img alt='Highway Products stlye options: Silverback' src='<?php echo DIR_IMAGES; ?>_misc/_colors/color-style-silverback.jpg' />
                 </li>
@@ -23,7 +23,7 @@
                 <li class='style-option' data-name='Diamond Plate' data-description='Diamond plate, also known as checker plate or tread plate, is a regular pattern of raised diamonds on one side which combines the looks of toughness and durability. Sharp and Clean!' data-style='diamond'>
                     <img alt='Highway Products stlye options: Diamond Plate' src='<?php echo DIR_IMAGES; ?>_misc/_colors/color-style-diamond-plate.jpg' />
                 </li>
-                <li class='style-option' data-name='Custom Colors' data-description="Please call us at 1-877-690-4679 to discuss exactly what you have in mind. We cater for any customized fabrication you need, just drop us a line and ask for our sales manager and explain in detail your ideas and dreams; we'll make it a reality." data-style='custom'>
+                <li class='style-option' data-name='Custom Colors' data-description="Please call us at <?php echo PHONE_NUMBER ?> to discuss exactly what you have in mind. We cater for any customized fabrication you need, just drop us a line and ask for our sales manager and explain in detail your ideas and dreams; we'll make it a reality." data-style='custom'>
                     <span class='fa fa-eyedropper'></span>
                     <div class='custom-colors'></div>
                 </li>

@@ -33,7 +33,7 @@ include_once('../_includes/newsletter.php');
 <h3>Our Simple Promise to You:</h3>
 <p>
 <br />
-Dear Customer,
+Dear Customer,<br /><br />
 In 1980, over 30 years ago, we first opened our doors at Highway Products, Inc. We soon found out the hard way that no matter what we do or how hard we try, sometimes a part gives up prematurely. And, that even the best engineering fails on occasion and in certain situations. We also found out, to our surprise, we're human! We found out that you, our customers, are very smart and realize everyone makes mistakes. But first, you were most interested in how our products performed. And second, if there was a problem, how are WE going to handle it?<br /><br />
 
 So we decided to take the pressure off our valued customer and put it where it should be, ON US! Thus, we are giving our customer a simple "Lifetime Warranty". No fine print to read, hidden rules or warranty cards to fill out, and no receipts needed for returns or service. So, if this is your first purchase from Highway Products, Inc., please read and believe the following: If we make a mistake, it will be our goal to fix or replace any defective products as fast as possible and Make You Happy!<br /><br />
