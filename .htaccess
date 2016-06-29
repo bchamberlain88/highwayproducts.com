@@ -11,6 +11,9 @@ AddOutputFilterByType DEFLATE application/x-javascript
 
 RewriteEngine on
 
+RewriteCond %{HTTP_HOST} ^highwayproducts.com [NC]
+RewriteRule ^(.*)$ http://www.highwayproducts.com/$1 [L,R=301,NC]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]+)$ index.php?q=$1 [L]

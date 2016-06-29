@@ -7,6 +7,14 @@
             $num_items = mysql_num_rows($getSubs);
             while($sub = mysql_fetch_assoc($getSubs)){
                 $i++;
+                if($i == 4 ){ ?>
+                    <a class='items-block one-fourth item' id='packs-pickup' href="<?php echo DIR_ROOT; ?>pickup-pack-standard">
+                        <div class='item-block-content'>    
+                            <img class='item-block-thumb' title="Pickup Packs" alt="Pickup Packs" src='<?php echo DIR_IMAGES ?>_products/trucks-pickup/packs-pickup/packs-pickup_thumb.jpg' />
+                            <span>Pickup Packs</span>
+                        </div>
+                    </a>
+                <?php continue; } 
                 if($i == 6 ){ ?>
                     <a class='items-block one-fourth item' id='truck-bed-caps' href="<?php echo DIR_ROOT; ?>bed-covers">
                         <div class='item-block-content'>    
