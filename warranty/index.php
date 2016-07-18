@@ -33,7 +33,7 @@ include_once('../_includes/newsletter.php');
 <h3>Our Simple Promise to You:</h3>
 <p>
 <br />
-Dear Customer,<br /><br />
+Dear Customer,
 In 1980, over 30 years ago, we first opened our doors at Highway Products, Inc. We soon found out the hard way that no matter what we do or how hard we try, sometimes a part gives up prematurely. And, that even the best engineering fails on occasion and in certain situations. We also found out, to our surprise, we're human! We found out that you, our customers, are very smart and realize everyone makes mistakes. But first, you were most interested in how our products performed. And second, if there was a problem, how are WE going to handle it?<br /><br />
 
 So we decided to take the pressure off our valued customer and put it where it should be, ON US! Thus, we are giving our customer a simple "Lifetime Warranty". No fine print to read, hidden rules or warranty cards to fill out, and no receipts needed for returns or service. So, if this is your first purchase from Highway Products, Inc., please read and believe the following: If we make a mistake, it will be our goal to fix or replace any defective products as fast as possible and Make You Happy!<br /><br />
@@ -118,31 +118,7 @@ P.S. Feel free to ask for me if you don't think we're performing up to your stan
             <!-- load the products testimonials - limit: 3 -->
             <?php productTestimonials( $product_selector, SET_LIMIT_PRODUCT_TESTIMONIALS ); ?>
         </div>
-        <div class='sidebar-signup'>
-            <h1 class="newsSign">Newsletter Signup</h1>
-            <p>Receive special promotional offers, discount opportunities, and news updates!</p>
-            <form class='newsletter-form sidebar-news aweber-form' data-submit='<?php echo $newsFormID; ?>'>
-                <input required spellcheck='false' class='input-text large sidebar-input animate form-input aweber-input' data-aweber='awf_field-<?php echo $newsEmailID; ?>' name='email' placeholder='Enter your email address' type='text' />
-                <button class='button large secondary animate submit' type='submit'>Subscribe To Newsletter</button>
-            </form>
-            <div class="aweber AW-Form-<?php echo $newsFormID; ?>"></div>
-            <!-- newsletter script -->
-            <script type="text/javascript">(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//forms.aweber.com/form/99/<?php echo $newsFormID; ?>.js";
-                fjs.parentNode.insertBefore(js, fjs);
-                }(document, "script", "aweber-wjs-6bhepjf7u"));
-            </script>
-            <div id="hideSep" class='side-sep'></div>
-            <h1 class="interProd">Interested in this product?</h1>
-            <p>Click the button below to fill out a form and get a free quote from one of our sales representatves!</p>
-            <button class='button large gold sidebar-quote animate submit get-quote-plox' type='submit'>
-                <span class='fa fa-paper-plane'></span>
-                Get a free quote
-            </button>
-        </div>
+        <?php include_once('../_includes/sidebar_signup.php'); ?>
     </div>
     </div>
 

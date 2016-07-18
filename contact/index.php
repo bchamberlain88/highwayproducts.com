@@ -71,12 +71,12 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
             <div class='form-msg'></div>
 
             <div class='form-row'>
-                <input required class='aweber-input form-input three' data-aweber='awf_field-77798206' name='name' placeholder='Full Name' type='text' />
-                <input required autocorrect='off' spellcheck='false' class='aweber-input form-input three' data-aweber='awf_field-77798207' name='email' placeholder='Email Address' type='email' />
-                <input required autocorrect='off' spellcheck='false' class='aweber-input form-input three' data-aweber='awf_field-77798208' name='phone' placeholder='Phone Number' type='tel' />
+                <input required class='aweber-input form-input three' data-aweber='awf_field-77798206' name='cont_name' placeholder='Full Name' type='text' />
+                <input required autocorrect='off' spellcheck='false' class='aweber-input form-input three' data-aweber='awf_field-77798207' name='cont_email' placeholder='Email Address' type='email' />
+                <input required autocorrect='off' spellcheck='false' class='aweber-input form-input three' data-aweber='awf_field-77798208' name='cont_phone' placeholder='Phone Number' type='tel' />
             </div><!-- form-row -->
             <div class='form-row'>
-                <textarea required class='aweber-input form-textarea' data-aweber='awf_field-77798209' name='message' placeholder='Enter your message'></textarea>
+                <textarea required class='aweber-input form-textarea' data-aweber='awf_field-77798209' name='cont_message' placeholder='Enter your message'></textarea>
             </div><!-- form-row -->
             <input class='button medium secondary animate submit-form' name='contact' type='submit' value='Submit Form' />
         </form>
@@ -96,7 +96,7 @@ if( SET_FACEBOOK_LIKES == 'true' ) { ?>
             <h1>Subscribe To Our Newsletter <i class='fa fa-lg fa-times close-newsletter'></i></h1>
             <p>Enter your email address to subscribe to the Highway Products monthly newsletter.
             Receive special promotional offers, discount opportunities, as well as the latest news and updates from our sales team!</p>
-            <input required class='aweber-input input-text large animate' data-aweber='awf_field-79713815' placeholder='Enter your email address' type='text' />
+            <input name="news_email" required class='aweber-input input-text large animate' data-aweber='awf_field-79713815' placeholder='Enter your email address' type='text' />
             <button class='button medium secondary animate'>Join Newsletter</button>
             </form>
             <div class="aweber AW-Form-773120635"></div>

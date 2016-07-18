@@ -10,12 +10,12 @@ if(isset($_POST['mc_group_id'])) {
         'email_address' => $_POST['email'],
         'status'        => 'subscribed',
         'merge_fields'  => array(
-            'FULLNAME' => $_POST['name'],
-            'ZIP' => $_POST['zip'],
-            'PHONE' => $_POST['phone'],
-            'MESSAGE' => $_POST['message'],
-            'CONTACT' => $_POST['contact'],
-            'YRMKMODEL' => $_POST['truck'],
+            'FULLNAME' => (isset($_POST['name'])) ? $_POST['name'] : '',
+            'ZIP' => (isset($_POST['zip'])) ? $_POST['zip'] : '',
+            'PHONE' => (isset($_POST['phone'])) ? $_POST['phone'] : '',
+            'MESSAGE' => (isset($_POST['message'])) ? $_POST['message'] : '',
+            'CONTACT' => (isset($_POST['contact'])) ? $_POST['contact'] : '',
+            'YRMKMODEL' => (isset($_POST['truck'])) ? $_POST['truck'] : '',
         ),
         'interests'  => array( $_POST['mc_group_id'] => true )
     ));
@@ -24,30 +24,43 @@ if(isset($_POST['mc_group_id'])) {
         'email_address' => $_POST['email'],
         'status'        => 'subscribed',
         'merge_fields'  => array(
-            'FULLNAME' => $_POST['name'],
-            'ZIP' => $_POST['zip'],
-            'PHONE' => $_POST['phone'],
-            'MESSAGE' => $_POST['message'],
-            'CONTACT' => $_POST['contact'],
-            'YRMKMODEL' => $_POST['truck'],
+            'FULLNAME' => (isset($_POST['name'])) ? $_POST['name'] : '',
+            'ZIP' => (isset($_POST['zip'])) ? $_POST['zip'] : '',
+            'PHONE' => (isset($_POST['phone'])) ? $_POST['phone'] : '',
+            'MESSAGE' => (isset($_POST['message'])) ? $_POST['message'] : '',
+            'CONTACT' => (isset($_POST['contact'])) ? $_POST['contact'] : '',
+            'YRMKMODEL' => (isset($_POST['truck'])) ? $_POST['truck'] : '',
         )
     ));
 }
 //if the member is already subscribed, update them
 if($result['title'] == 'Member Exists') {
     $subscriber_hash = $MailChimp->subscriberHash($_POST['email']);
-    $result = $MailChimp->patch("lists/$list_id/members/$subscriber_hash", array(
-        'merge_fields'  => array(
-            'FULLNAME' => $_POST['name'],
-            'ZIP' => $_POST['zip'],
-            'PHONE' => $_POST['phone'],
-            'MESSAGE' => $_POST['message'],
-            'CONTACT' => $_POST['contact'],
-            'YRMKMODEL' => $_POST['truck'],
-        ),
-        'interests'    => array($_POST['mc_group_id'] => true),
-    ));
-}
+    if(isset($_POST['mc_group_id'])) {
+        $result = $MailChimp->patch("lists/$list_id/members/$subscriber_hash", array(
+            'merge_fields'  => array(
+                'FULLNAME' => (isset($_POST['name'])) ? $_POST['name'] : '',
+                'ZIP' => (isset($_POST['zip'])) ? $_POST['zip'] : '',
+                'PHONE' => (isset($_POST['phone'])) ? $_POST['phone'] : '',
+                'MESSAGE' => (isset($_POST['message'])) ? $_POST['message'] : '',
+                'CONTACT' => (isset($_POST['contact'])) ? $_POST['contact'] : '',
+                'YRMKMODEL' => (isset($_POST['truck'])) ? $_POST['truck'] : '',
+            ),
+            'interests'    => array($_POST['mc_group_id'] => true),
+        ));
+    } else {
+        $result = $MailChimp->patch("lists/$list_id/members/$subscriber_hash", array(
+            'merge_fields'  => array(
+                'FULLNAME' => (isset($_POST['name'])) ? $_POST['name'] : '',
+                'ZIP' => (isset($_POST['zip'])) ? $_POST['zip'] : '',
+                'PHONE' => (isset($_POST['phone'])) ? $_POST['phone'] : '',
+                'MESSAGE' => (isset($_POST['message'])) ? $_POST['message'] : '',
+                'CONTACT' => (isset($_POST['contact'])) ? $_POST['contact'] : '',
+                'YRMKMODEL' => (isset($_POST['truck'])) ? $_POST['truck'] : '',
+            )
+        ));
+    }
+}  
 // diagnostic
 // echo '<pre>';
 // print_r($result);

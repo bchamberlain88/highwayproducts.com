@@ -380,7 +380,7 @@ $product_selector = $_GET['q'];
             <h1 class="newsSign">Newsletter Signup</h1>
             <p>Receive special promotional offers, discount opportunities, and news updates!</p>
             <form class='newsletter-form sidebar-news aweber-form' data-submit='<?php echo $newsFormID; ?>'>
-                <input required spellcheck='false' class='input-text large sidebar-input animate form-input aweber-input' data-aweber='awf_field-<?php echo $newsEmailID; ?>' name='email' placeholder='Enter your email address' type='text' />
+                <input required spellcheck='false' class='input-text large sidebar-input animate form-input aweber-input' data-aweber='awf_field-<?php echo $newsEmailID; ?>' name='news_email' placeholder='Enter your email address' type='text' />
                 <button class='button large secondary animate submit' type='submit'>Subscribe To Newsletter</button>
             </form>
             <div class="aweber AW-Form-<?php echo $newsFormID; ?>"></div>
@@ -473,7 +473,7 @@ if( SET_SHARING == 'true' ) { ?>
                 <p>Enter your email address to subscribe to the Highway Products monthly newsletter.
                 Receive special promotional offers, discount opportunities, as well as the latest news and updates from our sales team!</p>
                 <form class='newsletter-form aweber-form' data-submit='<?php echo $newsFormID; ?>'>
-                    <input required spellcheck='false' class='input-text large animate form-input aweber-input' data-aweber='awf_field-<?php echo $newsEmailID; ?>' name='email' placeholder='Enter your email address' type='text' />
+                    <input required spellcheck='false' class='input-text large animate form-input aweber-input' data-aweber='awf_field-<?php echo $newsEmailID; ?>' name='news_email' placeholder='Enter your email address' type='text' />
                     <button class='button medium secondary animate submit' type='submit'>Join Newsletter</button>
                 </form>
                 <div class="AW-Form-<?php echo $newsFormID; ?> aweber-news"></div>
