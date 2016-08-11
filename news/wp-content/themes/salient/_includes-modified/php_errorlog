@@ -1,0 +1,1 @@
+[02-Aug-2016 21:39:02 CST6CDT] PHP Deprecated:  mysql_query(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/highwayp/public_html/highwayproducts.com/news/wp-content/themes/salient/_includes-modified/header.inc.php on line 176

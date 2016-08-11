@@ -12,7 +12,7 @@
  */
 
 //check if a quote has been submitted
-    if(isset($_GET['quote'])) {
+    if(isset($_GET['requested_quote'])) {
         echo "<div class='message-sent'><i class='fa fa-times close-message'></i>Thank you for contacting us! Your quote request has been received and will be responded to within one business day.</div>";
     }
     if(isset($_GET['newsletter'])) {

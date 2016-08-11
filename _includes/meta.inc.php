@@ -64,9 +64,15 @@ if (document.cookie.indexOf("quote_sent") >= 0) {
     //remove quote cookie and redirect to successful send page
     createCookie("quote_sent", "", -1, '/');
     //set url structure depending on whether we are looking at a product
-    window.location = "<?php if(isset($product_selector)){echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" . "&quote=sent"; } else {
-        echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" . "?quote=sent";
-    } ?>"
+    window.location = "<?php 
+        //strip existing URL parameter if it is already set to prevent ugly URL
+        if(isset($product_selector)) { 
+            $ParameterCleanedURI = str_ireplace('&requested_quote=sent', '', $_SERVER[REQUEST_URI]);
+            echo "http://" . $_SERVER[HTTP_HOST] . $ParameterCleanedURI . "&requested_quote=sent"; 
+        } else {
+            $ParameterCleanedURI = str_ireplace('?requested_quote=sent', '', $_SERVER[REQUEST_URI]);
+            echo "http://" . $_SERVER[HTTP_HOST] . $ParameterCleanedURI . "?requested_quote=sent";
+        } ?>"
 }
 </script>
 <script type="application/ld+json">{
