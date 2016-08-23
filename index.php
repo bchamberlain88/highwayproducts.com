@@ -205,7 +205,7 @@ $product_selector = $_GET['q'];
 </script>
 <gcse:searchbox-only></gcse:searchbox-only>
 </div>
-            <a class='animate button medium gold get-quote-btn get-quote-plox'>
+            <a class='animate button medium gold get-quote-btn get-quote-plox hide ten-twenty-four'>
                 <span class='fa fa-paper-plane'></span>
                 <span class='hide ten_twenty_four'>Click for a </span>free quote
             </a>
@@ -263,13 +263,26 @@ $product_selector = $_GET['q'];
                     <span class='hide four_eighty'>Rated</span> <span itemprop='ratingValue' itemprop='rating'><?php echo $rating['average']; ?></span> out of 5 stars<span class='count hide four_eighty'><span itemprop='reviewCount'><?php echo $rating['ratings']; ?></span> <span class='hide four_eighty'>Votes</span></span>
                 </label>
             </ul>
+            <div class='order-direct order-mobile'>
+                <img class='order-direct-img' src='<?php echo DIR_IMAGES; ?>_misc/order-direct.png' />
+                <p class='order-text'>
+                    <span class='call-us-now'>call us now!</span><br />
+                    <span class='call-us-number'><a href='<?php echo PHONE_NUMBER_LINK ?>'>1-877-690-4679</a></span>
+                </p>
+            </div>
+            <a class='animate button medium gold get-quote-btn get-quote-plox mobile-quote'>
+                <span class='fa fa-paper-plane'></span>
+                <span class='hide ten_twenty_four'>Click for a </span>free quote
+            </a>
             <?php
             //if we want to show video above description
             if($video['video_above_desc'] == 1) {
                 showVideo( 'product', $product_selector );
             } 
             //generate three images above gallery link and the link itself
+            echo "<div class='galleryPreview'>"; 
             galleryImageThumbs('product', $product_selector);
+            echo "</div>";
             ?>
             <p class='product-copy four_eighty'>
                 <?php echo $product['description']; ?>
@@ -313,6 +326,13 @@ $product_selector = $_GET['q'];
         <?php } ?>
     </div>
     <div class='right-content'>
+        <div class='order-direct'>
+            <img class='order-direct-img' src='<?php echo DIR_IMAGES; ?>_misc/order-direct.png' />
+            <p class='order-text'>
+                <span class='call-us-now'>call us now!</span><br />
+                <span class='call-us-number'><a href='<?php echo PHONE_NUMBER_LINK ?>'>1-877-690-4679</a></span>
+            </p>
+        </div>
         <?php // include addthis api if sharing is allowed
         if( SET_SHARING == 'true' ) { ?>
             <h2 class=''>Share this page</h2>

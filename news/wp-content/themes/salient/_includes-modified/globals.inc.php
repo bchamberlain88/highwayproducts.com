@@ -12,7 +12,9 @@
 
  */
 
-
+//the phone number listed on the website
+define( 'PHONE_NUMBER', '1-877-690-4679 (Toll free)');
+define( 'PHONE_NUMBER_LINK', 'tel:+18776904679');
 
 // full url of the current page being viewed
 

@@ -152,7 +152,7 @@ if($using_secondary == 'header_with_secondary') { ?>
 				  
 				<div class="col span_3">
 					
-					<a id="logo" href="http://www.new.highwayproducts.com/" <?php echo $logo_class; ?>>
+					<a id="logo" href="http://www.highwayproducts.com/" <?php echo $logo_class; ?>>
 						
 						<?php if(!empty($options['use-logo'])) {
 							
