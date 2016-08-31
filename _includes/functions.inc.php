@@ -111,9 +111,6 @@ function redirect($url) {
  */
 
  function pageExists($pageType, $selector) {
- 	if($selector == 'pro-pickup-pack') {
- 		redirect('pickup-pack-standard');
- 	}
  	if($pageType == 'product'){
  		$checkPage = mysql_query("SELECT * FROM product_categories_items WHERE selector = '".$selector."'");
  		if(mysql_num_rows($checkPage) > 0 || strpos($_SERVER['REQUEST_URI'],'sent') !== false){
@@ -127,15 +124,6 @@ function redirect($url) {
  				if(mysql_num_rows($checkCat) > 0){
  					// the cat page exists, keep user on this page
  				}else{
- 					//set selector-specific redirects here
- 					if($selector == 'pro-pickup-pack')
- 					{
- 						redirect('pickup-pack-standard');
- 					}
- 					if($selector == 'custom-storage-boxes')
- 					{
- 						redirect('custom-tool-box');
- 					}
  					// the product does not exist, 404 error
  					header( 'HTTP/1.1 404 Not Found' );
 					// header( 'Location: ' . DIR_ROOT . 'error/404/' );
@@ -1071,7 +1059,7 @@ function productTestimonials( $selector = null, $limit = 3 ) {
 				$avatar = DIR_IMAGES . '_misc/_avatars/' . $testimonial['avatar'];
 			}
 			// echo out the testimonials
-			echo "<div class='testimonial-side' id='testimonial-" . $i . "' itemprop='review' itemscope itemtype='http://data-vocabulary.org/Review-aggregate'>";
+			echo "<div class='testimonial-side' id='testimonial-" . $i . "'>";
 				echo "<div class='testimonial-badge'>";
 					echo "<img alt='Product review by " . $testimonial['name'] . "' src='" . $avatar . "' />";
 				echo "</div>";

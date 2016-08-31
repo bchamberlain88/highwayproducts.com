@@ -39,7 +39,7 @@ if($_GET['q']){ /* THIS IS WHEN VIEWING A SPECIFIC PRODUCT FROM HERE DOWN */
 $product_selector = $_GET['q']; 
 ?>
 
-<div class='container sb' itemscope itemtype='http://data-vocabulary.org/Product'>
+<div class='container sb'>
     <?php if($product_selector){
 
     $getMainCat = mysql_query('SELECT * FROM product_categories_main WHERE url = "'.$product_selector.'"');
@@ -248,11 +248,11 @@ $product_selector = $_GET['q'];
                     <li class="lastCrumb" ><?php echo $product['name']; ?></li>
                 </ul>
             <?php } ?>
-            <h1 class='product-header' itemprop='name'>
+            <h1 class='product-header'>
                 <?php
-                if($product['is_hot'] == 1){ echo("<span class='hot-item' itemprop='condition' content='hot'>hot</span>"); }
-                if($product['is_new'] == 1){ echo("<span class='new-item' itemprop='condition' content='new'>new</span>"); }
-                if($product['is_onsale'] == 1){ echo("<span class='sale-item' itemprop='condition' content='sale'>sale</span>"); }
+                if($product['is_hot'] == 1){ echo("<span class='hot-item' content='hot'>hot</span>"); }
+                if($product['is_new'] == 1){ echo("<span class='new-item' content='new'>new</span>"); }
+                if($product['is_onsale'] == 1){ echo("<span class='sale-item' content='sale'>sale</span>"); }
                 echo $product['name'];
                 ?>
             </h1>
@@ -260,7 +260,7 @@ $product_selector = $_GET['q'];
                 <?php $rating = rating( 'product', $product_selector ); ?>
                 <?php printStars( $rating['average'] ); ?>
                 <label>
-                    <span class='hide four_eighty'>Rated</span> <span itemprop='ratingValue' itemprop='rating'><?php echo $rating['average']; ?></span> out of 5 stars<span class='count hide four_eighty'><span itemprop='reviewCount'><?php echo $rating['ratings']; ?></span> <span class='hide four_eighty'>Votes</span></span>
+                    <span class='hide four_eighty'>Rated</span> <?php echo $rating['average']; ?> out of 5 stars<span class='count hide four_eighty'><?php echo $rating['ratings']; ?> <span class='hide four_eighty'>Votes</span></span>
                 </label>
             </ul>
             <div class='order-direct order-mobile'>
